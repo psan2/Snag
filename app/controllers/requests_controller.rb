@@ -1,4 +1,10 @@
 class RequestsController < ApplicationController
-    belongs_to :beer
-    belongs_to :user
+  def open
+  end
+
+  def index
+  end
+
+  def new
+  end
 end
