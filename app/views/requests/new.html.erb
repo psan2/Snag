@@ -1,0 +1,13 @@
+<h1>Want me to bring one back for you?</h1>
+
+<div>
+<%= form_for @request do |f| %>
+  <p>
+    <%= f.label "Pick a beer: ", id:"beer_id" %>
+    <%= f.collection_select :beer_id, @beers.sort, :id, :name %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>
+</div>

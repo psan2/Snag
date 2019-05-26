@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 2019_05_24_150500) do
   create_table "requests", force: :cascade do |t|
     t.integer "requester_id"
     t.integer "snagger_id"
-    t.integer "beer_id_id"
+    t.integer "beer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["beer_id_id"], name: "index_requests_on_beer_id_id"
+    t.index ["beer_id"], name: "index_requests_on_beer_id"
   end
 
   create_table "users", force: :cascade do |t|
