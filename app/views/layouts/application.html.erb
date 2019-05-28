@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+  <head>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/application.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/beers.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/mods.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/requests.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/users.scss">
+    <title>Snag it!</title>
+  </head>
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">SNAG</a>
-      </div>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/beers">Beers</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Snag a beer for a friend!</a></li>
-        <li class="nav-item"><a class="nav-link" href="/requests/new">Request a beer!</a></li>
-      </ul>
-      <ul class="navbar-nav navbar-right">
-        <li class="nav-item"><a class="nav-link" href="/users/new"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </nav>
-
-    <div class="container">
+  <body>
+    <header>
+      <nav>
+        <div class="row">
+          <img src="./img/drawing-beer.png" alt="beer" class="beer-image">
+          <ul class="main-nav">
+            <li><a class=title href="/">SNAG</a></li>
+            <li><a href="/beers">Beers</a></li>
+            <li><a href="/requests/new">Request a beer!</a></li>
+            <li><a href="#">Snag a beer for a friend!</a></li>
+            <li><a href="/users/new">Login/Sign Up</a></li>
+          </ul>
+        </div>
+      </nav>
+        
+    </header>
+   <div class="container">
 
       <% if flash[:errors] %>
         <ul>
@@ -40,10 +46,6 @@
           <li style="color: red"><%= notice %></li>
       <% end %>
     </div>
-
-  </head>
-
-  <body>
 
     <%= yield %>
   </body>
