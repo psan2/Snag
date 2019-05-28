@@ -15,7 +15,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-    byebug
     @request = Request.new(request_params)
 
     if @request.valid?
