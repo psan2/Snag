@@ -5,7 +5,8 @@
     <h2><%= beer.name %></h2>
     <p><%= beer.abv %>% ABV</p>
     <p><%= beer.description %></p>
-		<br>
-	</div>
+		<h4><%= button_to "Request Snag", new_request_path %></h4>
+	  <br>
+  </div>
 
 <% end %>
