@@ -1,4 +1,8 @@
 class Request < ApplicationRecord
+    belongs_to :user, optional: true
     belongs_to :beer
-    belongs_to :user
-end
+
+    def set_request
+      @request = Request.find(params[:id])
+    end
+  end
