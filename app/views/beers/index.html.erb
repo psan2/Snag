@@ -1,0 +1,11 @@
+<h1>Beers</h1>
+
+<% @beers.each do |beer| %>
+    <h2>Beer:<%= beer.name %></h2>
+    <h4>ABV:<%= beer.abv %></h2>
+    <h4>Description:<%= beer.description %></h2>
+<% end %>
+
+<%= form_tag request_path, method: "new" do %>
+<%= submit_tag "Request a Snag!" %>
+<% end %>
