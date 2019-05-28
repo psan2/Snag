@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    byebug
     if login(params[:username], params[:password])
       flash[:success] = 'Welcome back!'
       redirect_back_or_to root_path

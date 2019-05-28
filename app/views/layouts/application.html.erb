@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Snag</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
     <nav class="navbar navbar-inverse">
       <div class="col">
@@ -23,6 +25,7 @@
           <li><%= link_to "BEERS", beers_path %></li>
           <li><%= link_to "ASK FOR A SNAG", new_request_path %></li>
           <li><%= link_to "SNAG ONE FOR A FRIEND", beers_path %></li>
+          <li><%= link_to "LOG OUT", log_out_path %></li>
           </ul>
         </div>
       </div>
@@ -30,17 +33,20 @@
 
     <div class="container">
 
-      <% if flash[:errors] %>
-        <ul>
-          <% flash[:errors].each do |error| %>
-            <li style="color: red"><%= error %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <% if flash.any? %>
+        <% flash.each do |type, message| %>
+          <ul>
+            <% if type == "error" || type == "warning" || type == "notice" %>
+              <li style="color: red"><%= message %></li>
 
-        <% if flash[:notice] %>
-          <li style="color: red"><%= notice %></li>
-      <% end %>
+            <% elsif type == "success" %>
+              <p style="color: green"><%= message %></p>
+            <% else %>
+              <p><%= message %></p>
+            <% end %>
+          </ul>
+          <% end %>
+        <% end %>
     </div>
 
   </head>
