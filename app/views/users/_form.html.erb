@@ -1,6 +1,33 @@
-<h3><%= form_for @user do |form| %>
-<h3><%= form.label :name, 'Full Name'%>
-<%= form.text_field :name %></h3>
-<h4>Module: <%= form.collection_select :mod_id, @mods, :id, :name%>
-<%= form.submit %></h4>
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mod_id %>
+    <%= f.collection_select :mod_id, @mods, :id, :name%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
+  </div>
+
+  <%= f.submit 'Register', class: 'btn btn-primary btn-lg' %>
 <% end %>
