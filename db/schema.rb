@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_141505) do
     t.string "salt"
     t.string "first_name"
     t.string "last_name"
-    t.integer "module_id"
+    t.integer "mod_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_users_on_username", unique: true

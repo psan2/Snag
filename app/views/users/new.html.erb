@@ -1,36 +1,3 @@
 <h1>Create an Account</h1>
 <%= render 'form'%>
 
-<%= form_for @user do |f| %>
-  <div class="form-group">
-    <%= f.label :username %>
-    <%= f.text_field :username, class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :module_id %>
-    <%= f.text_field :module_id, class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
-  </div>
-
-  <%= f.submit 'Register', class: 'btn btn-primary btn-lg' %>
-<% end %>
