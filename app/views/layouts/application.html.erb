@@ -10,6 +10,18 @@
   </head>
 
   <body>
+  <% if flash[:errors] %>
+     <ul> 
+       <% flash[:errors].each do |error| %>
+           <li style="color: red"><%= error %></li>
+       <% end %>
+     </ul>
+   <% end %>
+
+   <% if flash[:notice] %>
+       <li style="color: red"><%= notice %></li>
+   <% end %>
+
     <%= yield %>
   </body>
 </html>
