@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :requests
   resources :users
 
-  get '/requests/open', to: 'requests#open'
-  get '/requests/snag', to: 'requests#snag'
+  get '/open', to: 'requests#open'
+  get '/snag', to: 'requests#snag'
+
+  get '/sign_up', to: 'users#new', as: :sign_up
+
 
 end
