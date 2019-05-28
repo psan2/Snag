@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :users
 
   get '/requests/open', to: 'requests#open'
+  get '/requests/snag', to: 'requests#snag'
 
 end

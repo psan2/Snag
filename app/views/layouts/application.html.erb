@@ -1,27 +1,62 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <title>Snag</title>
+
+    <nav class="navbar navbar-inverse">
+      <div class="col">
+        <div class="navbar-header">
+          <%= link_to 'Snag', root_path, class: 'navbar-brand' %>
+        </div>
+      </div>
+      <div class="col">
+        <div id="navbar">
+          <ul class="nav navbar-nav">
+          <li><%= link_to "SNAG", root_path %></li>
+          <li><%= link_to "BEERS", beers_path %></li>
+          <li><%= link_to "ASK FOR A SNAG", new_request_path %></li>
+          <li><%= link_to "SNAG ONE FOR A FRIEND", beers_path %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+
+    <div class="container">
+
+      <% if flash[:errors] %>
+        <ul>
+          <% flash[:errors].each do |error| %>
+            <li style="color: red"><%= error %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+        <% if flash[:notice] %>
+          <li style="color: red"><%= notice %></li>
+      <% end %>
+    </div>
+
   </head>
 
   <body>
-  <% if flash[:errors] %>
-     <ul> 
-       <% flash[:errors].each do |error| %>
-           <li style="color: red"><%= error %></li>
-       <% end %>
-     </ul>
-   <% end %>
-
-   <% if flash[:notice] %>
-       <li style="color: red"><%= notice %></li>
-   <% end %>
 
     <%= yield %>
   </body>
 </html>
+
+<!doctype html>

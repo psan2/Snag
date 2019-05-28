@@ -6,6 +6,10 @@ class RequestsController < ApplicationController
 
   def index; end
 
+  def snag
+    
+  end
+
   def new
     @request = Request.new
   end

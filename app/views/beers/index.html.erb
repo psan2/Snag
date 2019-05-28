@@ -1,11 +1,11 @@
-<h1>Beers</h1>
+<h1>All Beers</h1>
 
 <% @beers.each do |beer| %>
-    <h2>Beer:<%= beer.name %></h2>
-    <h4>ABV:<%= beer.abv %></h2>
-    <h4>Description:<%= beer.description %></h2>
-<% end %>
+  <div>
+    <h2><%= beer.name %></h2>
+    <p><%= beer.abv %>% ABV</p>
+    <p><%= beer.description %></p>
+		<br>
+	</div>
 
-<%= form_tag request_path, method: "new" do %>
-<%= submit_tag "Request a Snag!" %>
 <% end %>
