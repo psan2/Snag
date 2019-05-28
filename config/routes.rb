@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :beers 
-  resources :users 
+  root "welcome#home"
+  resources :beers
   resources :requests
+  resources :users
+
+  get '/requests/open', to: 'requests#open'
+
 end
