@@ -45,11 +45,11 @@ class ModsController < ApplicationController
 
     private 
 
-    def user_params 
-        params.require(:mod.permit(:name)
+    def mod_params 
+        params.require(:mod).permit(:name)
     end 
 
-    def find_user
+    def find_mod
         @mod = Mod.find(params[:id])
     end
 
