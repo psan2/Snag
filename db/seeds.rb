@@ -24,19 +24,6 @@ ms = Mod.create(name: "Staff/Instructors")
 
 User.create(name: "Pat Santucci", mod_id: m2.id)
 User.create(name: "Ines Guerrero", mod_id: m2.id)
-User.create(name: "Aiden Leeming", mod_id: m2.id)
-User.create(name: "Katherine Wren", mod_id: m2.id)
-User.create(name: "Lauren Carne", mod_id: m2.id)
-User.create(name: "Marcus Mellor", mod_id: m2.id)
-User.create(name: "Amari Ellington", mod_id: m2.id)
-User.create(name: "Ayleen Nazario", mod_id: m2.id)
-User.create(name: "Ross Mawdsley", mod_id: m2.id)
-User.create(name: "Zubair Maqsood", mod_id: m2.id)
-User.create(name: "Anthea Merton", mod_id: m2.id)
-User.create(name: "Marco Miranda", mod_id: m2.id)
-User.create(name: "Miao Shan", mod_id: m2.id)
-User.create(name: "Daniel Kaczmarczyk", mod_id: ms.id)
-User.create(name: "Sam Barker", mod_id: ms.id)
-User.create(name: "Ian Harrison", mod_id: ms.id)
+
 
 
