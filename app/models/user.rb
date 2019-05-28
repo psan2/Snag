@@ -4,6 +4,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :requests
+  belongs_to :mod
 
   validates :username, presence: true
   validates :username, uniqueness: true

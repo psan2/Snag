@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :find_user, only: [:edit, :show, :update, :destroy]
 	before_action :find_mods, only: [:new, :edit, :create, :update]
-
+	skip_before_action :require_login, only: [:new, :create]
 
 	def index
 		@users = User.all
