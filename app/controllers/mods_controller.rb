@@ -1,53 +1,53 @@
 class ModsController < ApplicationController
     before_action :find_mod, only: [:edit, :show, :update, :destroy]
-    
-    def index 
+
+    def index
         @mods = Mod.all
-    end 
+    end
 
-    def show 
-    end 
+    def show
+    end
 
-    def new 
+    def new
         @mod = Mod.new
     end
 
-    def create 
+    def create
         @mod = Mod.new(mod_params)
         if @mod.valid?
             @mod.save
             flash[:notice] = "Mod has been created"
             redirect_to mods_path
-        else 
+        else
             flash[:errors] = @mod.errors.full_messages
             flash[:notice] = "Mod was not saved"
-            render :new 
-        end 
-    end 
+            render :new
+        end
+    end
 
     def update
         @mod.update(mod_params)
         if @mod.valid?
-            redirect_to @mod 
+            redirect_to @mod
             flash[:notice] = "Mod has been updated"
-        else 
+        else
             flash[:errors] = @mod.errors.full_messages
             flash[:notice] = "Please try again"
-            redirect_to edit_brand_path
+            redirect_to edit_user_path
         end
-    end 
+    end
 
-    def destroy 
-        @mod.destroy 
+    def destroy
+        @mod.destroy
         flash[:notice] = "Mod has been deleted"
         redirect_to mods_path
-    end 
+    end
 
-    private 
+    private
 
-    def mod_params 
+    def mod_params
         params.require(:mod).permit(:name)
-    end 
+    end
 
     def find_mod
         @mod = Mod.find(params[:id])

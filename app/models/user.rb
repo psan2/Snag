@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :username, uniqueness: true
-  validates :module_id, presence: true
+  validates :mod_id, presence: true
   validates :password, length: { minimum: 3 }
   validates :password, confirmation: true
 
