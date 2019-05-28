@@ -7,7 +7,7 @@ class SorceryCore < ActiveRecord::Migration[5.2]
       t.string :salt
       t.string :first_name
       t.string :last_name
-      t.integer :module_id
+      t.integer :mod_id
 
       t.timestamps                null: false
     end
