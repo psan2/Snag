@@ -1,8 +1,3 @@
 <h1>Create an Account</h1>
+<%= render 'form'%>
 
-<h3><%= form_for @user do |form| %>
-<h3><%= form.label :name, 'Full Name'%>
-<%= form.text_field :name %></h3>
-<h4>Module: <%= form.collection_select :mod_id, @mods, :id, :name %>
-<%= form.submit %>
-<% end %>
