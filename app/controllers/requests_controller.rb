@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RequestsController < ApplicationController
   before_action :set_request, only: %i[edit update destroy]
   before_action :include_beers, only: %i[new create edit update]
