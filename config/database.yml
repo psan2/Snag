@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: Snag_development
-  user: Snag
+  user: snag
   password: snagabeer
 
   # The specified database role being used to connect to postgres.
@@ -60,7 +60,7 @@ development:
 test:
   <<: *default
   database: Snag_test
-  user: Snag
+  user: snag
   password: snagabeer
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: Snag_production
-  username: Snag
+  username: snag
   password: <%= ENV['SNAG_DATABASE_PASSWORD'] %>
