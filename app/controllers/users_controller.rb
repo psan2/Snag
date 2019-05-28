@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 		else
 			flash[:errors] = @user.errors.full_messages
 			flash[:notice] = "Please try again"
-			redirect_to edit_brand_path
+			redirect_to edit_user_path
 		end
 	end
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:username, :password, :password_confirmation, :first_name, :last_name, :module_id)
+		params.require(:user).permit(:username, :password, :password_confirmation, :name, :mod_id)
 	end
 
 	def find_user
