@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+  <head>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Snag</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <nav class="navbar navbar-inverse">
-      <div class="col">
-        <div class="navbar-header">
-          <%= link_to 'Snag', root_path, class: 'navbar-brand' %>
-        </div>
-      </div>
-      <div class="col">
-        <div id="navbar">
-          <ul class="nav navbar-nav">
-          <li><%= link_to "SNAG", root_path %></li>
-          <li><%= link_to "BEERS", beers_path %></li>
-          <li><%= link_to "ASK FOR A SNAG", new_request_path %></li>
-          <li><%= link_to "SNAG ONE FOR A FRIEND", beers_path %></li>
-          <li><%= link_to "LOG OUT", log_out_path %></li>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/application.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/beers.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/mods.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/requests.scss">
+    <link rel="stylesheet" type ="text/css" href="app/assets/stylesheets/users.scss">
+    <title>Snag it!</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="row">
+          <img src="./img/drawing-beer.png" alt="beer" class="beer-image">
+          <ul class="main-nav">
+            <li><a class=title href="/">SNAG</a></li>
+            <li><a href="/beers">Beers</a></li>
+            <li><a href="/requests/new">Request a beer!</a></li>
+            <li><a href="#">Snag a beer for a friend!</a></li>
+            <li><a href="/users/new">Login/Sign Up</a></li>
           </ul>
         </div>
-      </div>
-    </nav>
-
-    <div class="container">
+      </nav>
+        
+    </header>
+   <div class="container">
 
       <% if flash.any? %>
         <% flash.each do |type, message| %>
@@ -48,10 +49,6 @@
           <% end %>
         <% end %>
     </div>
-
-  </head>
-
-  <body>
 
     <%= yield %>
   </body>
