@@ -8,27 +8,35 @@
 
 Beer.destroy_all
 User.destroy_all
+Mod.destroy_all
 
 Beer.create(name: "London Pale Ale", abv: 4.3, description: "British and American hops unite to make a sessionable pale ale that’s packed with citrus flavour. Now that’s a special relationship.")
 Beer.create(name: "London Lager", abv: 4.5, description: "East Anglian malt and Goldings hops combine for a crisp, refreshing lager that’s full of flavour. A modern classic, straight from London’s back garden.")
 Beer.create(name: "Yakima Red Ale", abv: 4.1, description: "British and German malts team up with five Yakima Valley American hops to create a vibrant and fruity red ale. As lively and colourful as the people that brew it.")
 Beer.create(name: "Aspall Draught Cyder", abv: 5.5, description: "Lovely with sweet & sour pork, balti and bhuna mild curries, chicken with tomato & sweet red peppers, and Bramley apple pie.")
 
-User.create(name: "Pat Santucci", mod_id: 2)
-User.create(name: "Ines Guerrero", mod_id: 2)
-User.create(name: "Aiden Leeming", mod_id: 2)
-User.create(name: "Katherine Wren", mod_id: 2)
-User.create(name: "Lauren Carne", mod_id: 2)
-User.create(name: "Marcus Mellor", mod_id: 2)
-User.create(name: "Amari Ellington", mod_id: 2)
-User.create(name: "Ayleen Nazario", mod_id: 2)
-User.create(name: "Ross Mawdsley", mod_id: 2)
-User.create(name: "Zubair Maqsood", mod_id: 2)
-User.create(name: "Anthea Merton", mod_id: 2)
-User.create(name: "Marco Miranda", mod_id: 2)
-User.create(name: "Miao Shan", mod_id: 2)
-User.create(name: "Daniel Kaczmarczyk", mod_id: 0)
-User.create(name: "Sam Barker", mod_id: 0)
-User.create(name: "Ian Harrison", mod_id: 0)
+m1 = Mod.create(name: "Mod 1")
+m2 = Mod.create(name: "Mod 2")
+m3 = Mod.create(name: "Mod 3")
+Mod.create(name: "Mod 4")
+Mod.create(name: "Mod 5")
+ms = Mod.create(name: "Staff/Instructors")
+
+User.create(name: "Pat Santucci", mod: m2)
+User.create(name: "Ines Guerrero", mod_id: m2.id)
+User.create(name: "Aiden Leeming", mod_id: m2.id)
+User.create(name: "Katherine Wren", mod_id: m2.id)
+User.create(name: "Lauren Carne", mod_id: m2.id)
+User.create(name: "Marcus Mellor", mod_id: m2.id)
+User.create(name: "Amari Ellington", mod_id: m2.id)
+User.create(name: "Ayleen Nazario", mod_id: m2.id)
+User.create(name: "Ross Mawdsley", mod_id: m2.id)
+User.create(name: "Zubair Maqsood", mod_id: m2.id)
+User.create(name: "Anthea Merton", mod_id: m2.id)
+User.create(name: "Marco Miranda", mod_id: m2.id)
+User.create(name: "Miao Shan", mod_id: m2.id)
+User.create(name: "Daniel Kaczmarczyk", mod_id: ms.id)
+User.create(name: "Sam Barker", mod_id: ms.id)
+User.create(name: "Ian Harrison", mod_id: ms.id)
 
 
