@@ -4,11 +4,14 @@ class RequestsController < ApplicationController
   before_action :include_locations, only: %i[new create]
 
   def new
-    @request = Request.new
+    if Request.bar_open?
+      @request = Request.new
+    else
+      redirect_to closed_path
+    end
   end
 
   def create
-    byebug
     @request = Request.new(request_params)
     if @request.valid?
       @request.save
