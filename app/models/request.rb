@@ -21,8 +21,7 @@ class Request < ApplicationRecord
   end
 
   def self.bar_open?
-    if (15..24).include?
-    end
+    (15...24).include?(Time.now.hour) ? true : false
   end
 
 end

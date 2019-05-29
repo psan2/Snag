@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   post '/close', to: 'requests#close'
   post '/snag', to: 'requests#snag'
   get '/confirm', to: 'requests#confirm'
+  get '/closed', to: 'welcome#closed', as: :closed
 
 end
