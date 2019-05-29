@@ -9,7 +9,7 @@ class MyValidator < ActiveModel::Validator
 end
 
 class Request < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :requester, :class_name => :User, :foreign_key => "requester_id"
   belongs_to :beer
   belongs_to :location
 
@@ -17,6 +17,11 @@ class Request < ApplicationRecord
   validates :status, inclusion: { in: ["open", "closed", "in progress"]}
 
   def self.snags
-    Request.all.select { |snag| snag.snagger_id.nil? && not(snag.requester_id.nil?) }
+    Request.all.select { |snag| snag.snagger_id.nil? && not(snag.requester_id.nil?) && snag.status == "open" && (snag.updated_at + 2.hours).future?  }
+  end
+
+  def self.bar_open?
+    if (15..24).include?
+    end
   end
 end
