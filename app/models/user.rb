@@ -19,4 +19,6 @@ class User < ApplicationRecord
   def currently_requesting
     Request.find_by(requester:self, :status => ["open", "in progress"] )
   end
+
+  
 end

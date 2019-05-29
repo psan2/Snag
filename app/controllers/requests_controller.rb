@@ -7,7 +7,6 @@ class RequestsController < ApplicationController
     @open_requests = Request.open
     @currently_snagging = current_user.currently_snagging
     @currently_requesting = current_user.currently_requesting
-    byebug
   end
 
   def new
