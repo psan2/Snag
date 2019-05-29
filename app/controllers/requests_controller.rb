@@ -3,8 +3,24 @@ class RequestsController < ApplicationController
   before_action :include_beers, only: %i[new create]
   before_action :include_locations, only: %i[new create]
 
+  def new
+    @request = Request.new
+  end
+
+  def create
+    byebug
+    @request = Request.new(request_params)
+    if @request.valid?
+      @request.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
   def snag
     @request.snagger_id = params["snagger_id"]
+    @request.status = "in progress"
     if @request.valid?
       @request.save
       redirect_to @request
@@ -17,23 +33,15 @@ class RequestsController < ApplicationController
 
   def show
     @requester = User.find(@request.requester_id)
-    @snagger = User.find(@request.snagger_id)
+
+    if @request.snagger_id.nil?
+      @snagger = nil
+    else
+      @snagger = User.find(@request.snagger_id)
+    end
+
     @location = @request.location
     @beer = @request.beer
-  end
-
-  def new
-    @request = Request.new
-  end
-
-  def create
-    @request = Request.new(request_params)
-    if @request.valid?
-      @request.save
-      redirect_to root_path
-    else
-      render :new
-    end
   end
 
   def destroy; end
@@ -49,7 +57,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:requester_id, :beer_id, :location_id)
+    params.require(:request).permit(:requester_id, :beer_id, :location_id, :status)
   end
 
   def include_locations
