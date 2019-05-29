@@ -51,42 +51,23 @@ p {
 
 .row {
   max-width: 1140px;
-  margin: 0 auto;
-}
-
-
-.title:link,
-.title:visited {
-  padding: 4px 0;
-  text-decoration: none;
-  color: rgb(3, 44, 3);
-  font-size: 30px;
-  letter-spacing: 4px;
-  transition: background-color 0.2s;
-  padding: 10px, 30px;
-  text-align: left
-}
-
-.title:hover, 
-.title:active {
-  border-bottom: 2px solid rgb(3, 44, 3);
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 0.2s;
+  display: block
 }
 
 .beer-image {
   height: 100px;
   width: auto;
-  float: left;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .main-nav {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 20px;
   display: inline-block;
+  padding-inline-start: 5px;
+  text-align: right
 }
 
 .main-nav li {
@@ -107,5 +88,26 @@ p {
 
 .main-nav li a:hover, 
 .main-nav li a:active {
+  border-bottom: 2px solid rgb(3, 44, 3);
+}
+
+.title:link,
+.title:visited {
+  padding: 4px 0;
+  text-decoration: none;
+  color: rgb(3, 44, 3);
+  font-size: 60px;
+  letter-spacing: 2px;
+  transition: background-color 0.2s;
+  text-align: left;
+  text-transform: uppercase;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s;
+}
+
+
+.title:hover, 
+.title:active {
   border-bottom: 2px solid rgb(3, 44, 3);
 }
