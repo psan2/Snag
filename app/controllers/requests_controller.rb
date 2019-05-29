@@ -19,6 +19,7 @@ class RequestsController < ApplicationController
 
   def snag
     @request.snagger_id = params["snagger_id"]
+    @request.status = "in progress"
     if @request.valid?
       @request.save
       redirect_to @request
