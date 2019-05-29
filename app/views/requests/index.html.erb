@@ -1,0 +1,55 @@
+<h1>Welcome to Snag</h1>
+<% if @currently_snagging.nil?%>
+  <h3>Open Requests</h3>
+  <ul>
+    <% @open_requests.each do |request| %>
+      <li><%= request.beer.name %>
+        <%= form_tag(request_path(request), method:"patch") do %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag :id, request.id %>
+          <%= hidden_field_tag "request[snagger_id]", current_user.id %>
+          <%= hidden_field_tag "request[status]", "in progress" %>
+          <%= submit_tag "SNAG IT" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <h4>You're currently snagging <%= @currently_snagging.requester.name %> a <%= @currently_snagging.beer.name %> - they're waiting in <%= @currently_snagging.location.name %>!</h4>
+  <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
+    <%= hidden_field_tag :id, @currently_snagging.id %>
+    <%= hidden_field_tag "request[status]", "closed" %>
+    <%= submit_tag "Beer Delivered" %>
+  <%end%>
+
+  <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
+    <%= hidden_field_tag :id, @currently_snagging.id %>
+    <%= hidden_field_tag "request[status]", "open" %>
+    <%= hidden_field_tag "request[snagger_id]", nil %>
+    <%= submit_tag "Sorry, can't Snag it!" %>
+  <% end %>
+
+<% end %>
+
+<% if @currently_requesting.nil? %>
+  <div>
+    <%= form_tag new_request_path, method:"get" do %>
+      <%= submit_tag 'Request a beer' -%>
+    <% end %>
+  </div>
+<% else %>
+  <% if @currently_requesting.status == "open" %>
+    <div>You're currently requesting a <%= @currently_requesting.beer.name %>.  We'll let you know when someone's bringing it!</div>
+    <%= form_tag new_request_path, method:"patch" do %>
+      <%= hidden_field_tag "request[status]", "closed" %>
+      <%= submit_tag 'Cancel this request' %>
+    <% end %>
+  <% elsif @currently_requesting.status == "in progress" %>
+    <div>Your <%= @currently_requesting.beer.name %> is on the way, courtesy of <%= @currently_requesting.snagger.name %>!  </div>
+  <% end %>
+<% end %>
+
+
+
