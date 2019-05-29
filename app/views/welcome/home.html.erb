@@ -1,38 +1,4 @@
-<h1>Welcome to Snag</h1>
+Page shows options to log in or register
 
-
-<% if @current_snag.nil?%>
-  <ul>
-    <% @snags.each do |snag| %>
-      <li><%= snag.beer.name %>
-        <%= form_tag(snag_path, method:"update") do %>
-          <%= hidden_field_tag :snagger_id, current_user.id %>
-          <%= hidden_field_tag :id, snag.id %>
-          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <%= submit_tag "SNAG IT" %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-
-<% else %>
-
-  <%= form_tag(request_path(@current_snag), method:"patch") do %>
-    <%= hidden_field_tag :id, @current_snag.id %>
-    <%= hidden_field_tag :status, "closed" %>
-    <%= submit_tag "Beer Delivered" %>
-  <%end%>
-
-  <%= form_tag(request_path(@current_snag), method:"patch") do %>
-    <%= hidden_field_tag :id, @current_snag.id %>
-    <%= hidden_field_tag :status, "open" %>
-    <%= submit_tag "Sorry, can't Snag it!" %>
-  <%end%>
-
-<% end %><br>
-
-
-<div><%= link_to "ASK FOR A SNAG", new_request_path %></div>
-
-
-
+<p><%= link_to "Log in", log_in_path %></p>
+<p><%= link_to "Sign up", sign_up_path %></p>
