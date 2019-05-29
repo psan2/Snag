@@ -1,7 +1,15 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[show destroy snag]
+  before_action :set_request, only: %i[update show destroy]
   before_action :include_beers, only: %i[new create]
   before_action :include_locations, only: %i[new create]
+
+  def index
+    @open_requests = Request.open
+    @currently_snagging = current_user.currently_snagging
+    unless @current_snag.nil?
+      @currently_snagging_for = @currently_snagging.requester
+    end
+  end
 
   def new
     if Request.bar_open?
@@ -15,32 +23,36 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     if @request.valid?
       @request.save
-      redirect_to root_path
+      redirect_to requests_path
     else
       render :new
     end
   end
 
-  def snag
-    @request.snagger_id = params["snagger_id"]
-    @request.status = "in progress"
+  def update
+    @request.update(request_params)
     if @request.valid?
       @request.save
-      redirect_to @request
+      byebug
+      if @request.status == "in progress"
+        redirect_to @request
+      else
+        redirect_to requests_path
+      end
     else
       flash[:error] = @request.errors[:error].join
-      @snags = Request.snags
-      render "welcome/home"
+      @open_requests = Request.open
+      render :index
     end
   end
 
   def show
-    @requester = User.find(@request.requester_id)
+    @requester = @request.requester
 
     if @request.snagger_id.nil?
       @snagger = nil
     else
-      @snagger = User.find(@request.snagger_id)
+      @snagger = @request.snagger
     end
 
     @location = @request.location
@@ -60,7 +72,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:requester_id, :beer_id, :location_id, :status)
+    params.require(:request).permit(:requester_id, :snagger_id, :beer_id, :location_id, :status)
   end
 
   def include_locations

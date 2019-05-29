@@ -1,0 +1,38 @@
+<h1>Welcome to Snag</h1>
+<% if @currently_snagging.nil?%>
+
+  <ul>
+    <% @open_requests.each do |request| %>
+      <li><%= request.beer.name %>
+        <%= form_tag(request_path(request), method:"patch") do %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag :id, request.id %>
+          <%= hidden_field_tag "request[snagger_id]", current_user.id %>
+          <%= hidden_field_tag "request[status]", "in progress" %>
+          <%= submit_tag "SNAG IT" %>
+        <% end %>
+      </li>
+    <% end %>
+    <div><%= link_to "ASK FOR A SNAG", new_request_path %></div>
+  </ul>
+
+<% else %>
+
+  <h4>You're currently snagging <%= @currently_snagging_for.name %> a <%= @currently_snagging.beer.name %> - they're waiting in <%= @currently_snagging.location.name %>!</h4>
+  <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
+    <%= hidden_field_tag :id, @currently_snagging.id %>
+    <%= hidden_field_tag "request[status]", "closed" %>
+    <%= submit_tag "Beer Delivered" %>
+  <%end%>
+
+  <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
+    <%= hidden_field_tag :id, @currently_snagging.id %>
+    <%= hidden_field_tag "request[status]", "open" %>
+    <%= hidden_field_tag "request[snagger_id]", nil %>
+    <%= submit_tag "Sorry, can't Snag it!" %>
+  <% end %>
+
+<% end %>
+
+
+

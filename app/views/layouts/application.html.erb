@@ -18,7 +18,11 @@
         <div class="row">
            <!-- <%# <a href=<%= root_path %>><img src="./img/beer2.png" alt="beer" class="beer-image"> %> -->
           <ul class="main-nav">
-            <li><a class=title href="/">SNAG</a></li>
+            <% if logged_in? %>
+              <li><a class=title href=<%= requests_path %> >SNAG</a></li>
+            <% else %>
+              <li><a class=title href=<%= log_in_path %> >SNAG</a></li>
+            <% end %>
             <li><a href=<%= beers_path %>>Beers</a></li>
             <li><a href=<%= new_request_path %>>Request a beer</a></li>
             <li><a href="#">Snag a beer for a friend</a></li>

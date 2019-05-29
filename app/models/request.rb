@@ -10,13 +10,14 @@ end
 
 class Request < ApplicationRecord
   belongs_to :requester, :class_name => :User, :foreign_key => "requester_id"
+  belongs_to :snagger, :class_name => :User, :foreign_key => "snagger_id", optional: true
   belongs_to :beer
   belongs_to :location
 
   validates_with MyValidator
   validates :status, inclusion: { in: ["open", "closed", "in progress"]}
 
-  def self.snags
+  def self.open
     Request.all.select { |snag| snag.snagger_id.nil? && not(snag.requester_id.nil?) && snag.status == "open" && (snag.updated_at + 2.hours).future?  }
   end
 
