@@ -16,7 +16,11 @@
     <header>
       <nav>
         <div class="row">
+<<<<<<< HEAD
           <a href=<%= root_path %>><img src="./img/drawing-beer.png" alt="beer" class="beer-image">
+=======
+          <img src="public/beer-image.png" alt="beer" class="beer-image">
+>>>>>>> 7147d182a3276aed36a92e5f4bad682433360cbf
           <ul class="main-nav">
             <li><a class=title href="/">SNAG</a></li>
             <li><a href=<%= beers_path %>>Beers</a></li>
@@ -32,8 +36,7 @@
       </nav>
 
     </header>
-   <div class="container">
-
+  
       <% if flash.any? %>
         <% flash.each do |type, message| %>
           <ul>
@@ -48,7 +51,7 @@
           </ul>
           <% end %>
         <% end %>
-    </div>
+  
 
     <%= yield %>
   </body>
