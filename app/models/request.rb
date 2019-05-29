@@ -16,6 +16,6 @@ class Request < ApplicationRecord
   validates_with MyValidator
 
   def self.snags
-    Request.all.select { |snag| snag.snagger_id.nil? }
+    Request.all.select { |snag| snag.snagger_id.nil? && not(snag.requester_id.nil?) }
   end
 end
