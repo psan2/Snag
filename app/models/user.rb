@@ -13,6 +13,10 @@ class User < ApplicationRecord
   validates :password, confirmation: true
 
   def currently_snagging
-    Request.find_by(snagger_id:self.id, status:"in progress")
+    Request.find_by(snagger:self, status:"in progress")
+  end
+
+  def currently_requesting
+    Request.find_by(requester:self, :status => ["open", "in progress"] )
   end
 end

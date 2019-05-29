@@ -6,16 +6,17 @@ class RequestsController < ApplicationController
   def index
     @open_requests = Request.open
     @currently_snagging = current_user.currently_snagging
-    unless @current_snag.nil?
-      @currently_snagging_for = @currently_snagging.requester
-    end
+    @currently_requesting = current_user.currently_requesting
+    byebug
   end
 
   def new
-    if Request.bar_open?
-      @request = Request.new
-    else
+    if !(Request.bar_open?)
       redirect_to closed_path
+    else
+      if
+        @request = Request.new
+      end
     end
   end
 
@@ -33,7 +34,6 @@ class RequestsController < ApplicationController
     @request.update(request_params)
     if @request.valid?
       @request.save
-      byebug
       if @request.status == "in progress"
         redirect_to @request
       else
