@@ -17,9 +17,10 @@
   <body>
       <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <% if logged_in? %>
-        <a class="navbar-brand" href=<%= requests_path %>>SNAG</a>
+          <a class="navbar-brand" href=<%= requests_path %>>SNAG</a>
         <% else %>
-        <a class="navbar-brand" href=<%= log_in_path %>>SNAG</a>
+          <a class="navbar-brand" href=<%= log_in_path %>>SNAG</a>
+        <%end%>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -32,13 +33,13 @@
               <a class="nav-link" href="#">Snag a beer</a>
             </li>
             <% if logged_in? %>
-            <li class="nav-item">
-              <a class="nav-link" href=<% log_out_path %>>Logout</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link" href=<% log_out_path %>>Logout</a>
+              </li>
             <%else%>
-            <li class="nav-item">
-              <a class="nav-link" href=<% sign_up_path %>>Login/Sign Up</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link" href=<% sign_up_path %>>Login/Sign Up</a>
+              </li>
             <%end%>
           </ul>
         </div>
