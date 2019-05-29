@@ -59,7 +59,7 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:requester_id, :snagger_id, :beer_id)
   end
 
-  def find_locatons 
+  def find_locations 
     @locations = Location.all 
   end 
 end
