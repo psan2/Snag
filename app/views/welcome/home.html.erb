@@ -1,15 +1,20 @@
 <h1>Welcome to Snag</h1>
+
 <% @snags.each do |snag| %>
-  <ul>
-    <li><%= snag.beer.name %>
-    <%= form_tag(snag_path, method:"update") do %>
-      <%= hidden_field_tag :snagger_id, current_user.id %>
-      <%= hidden_field_tag :id, snag.id %>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <%= submit_tag "SNAG IT" %>
-    <% end %>
-    </li>
-  </ul>
+  <% if @snag.status == "in progress" && @snagger_id == current_user.id%>
+    <h4>You are snagging a beer, let us know when you have it!</h4>
+    <%else%>
+      <ul>
+        <li><%= snag.beer.name %>
+        <%= form_tag(snag_path, method:"update") do %>
+          <%= hidden_field_tag :snagger_id, current_user.id %>
+          <%= hidden_field_tag :id, snag.id %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= submit_tag "SNAG IT" %>
+        <% end %>
+        </li>
+      </ul>
+    <%end%>
 <% end %>
 
 <div><%= link_to "ASK FOR A SNAG", new_request_path %></div>
