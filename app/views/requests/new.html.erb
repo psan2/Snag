@@ -5,6 +5,9 @@
   <p>
     <%= f.label "Pick a beer: ", id:"beer_id" %>
     <%= f.collection_select :beer_id, @beers.sort, :id, :name %>
+  </p>
+  <p>
+    <%= f.label "Where are you? ", id:"location_id" %>
     <%= f.collection_select :location_id, @locations.sort, :id, :name %>
   </p>
 
