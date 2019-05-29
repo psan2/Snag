@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[edit update destroy snag]
+  before_action :set_request, only: %i[show edit update destroy snag]
   before_action :include_beers, only: %i[new create edit update]
 
   def open; end
@@ -10,13 +10,18 @@ class RequestsController < ApplicationController
     @request.snagger_id = params["snagger_id"]
     if @request.valid?
       @request.save
-      redirect_to root_path
+      redirect_to @request
     else
-      byebug
       flash[:error] = @request.errors[:error].join
       @snags = Request.snags
       render "welcome/home"
     end
+  end
+
+  def show
+    @requester = User.find(@request.requester_id)
+    @snagger = User.find(@request.snagger_id)
+    @beer = @request.beer
   end
 
   def new

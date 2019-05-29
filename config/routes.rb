@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   get '/open', to: 'requests#open'
   post '/snag', to: 'requests#snag'
+  get '/confirm', to: 'requests#confirm'
 
 end
