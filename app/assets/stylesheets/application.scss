@@ -78,14 +78,15 @@ p {
   height: 100px;
   width: auto;
   float: left;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .main-nav {
-  float: right;
   list-style: none;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .main-nav li {
