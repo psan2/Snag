@@ -11,6 +11,7 @@ end
 class Request < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :beer
+  belongs_to :location
 
   validates_with MyValidator
 

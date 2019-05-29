@@ -11,6 +11,7 @@
 Beer.destroy_all
 User.destroy_all
 Mod.destroy_all
+Location.destroy_all
 
 Beer.create(name: 'London Pale Ale', abv: 4.3, description: 'British and American hops unite to make a sessionable pale ale that’s packed with citrus flavour. Now that’s a special relationship.')
 Beer.create(name: 'London Lager', abv: 4.5, description: 'East Anglian malt and Goldings hops combine for a crisp, refreshing lager that’s full of flavour. A modern classic, straight from London’s back garden.')
@@ -26,3 +27,22 @@ ms = Mod.create(name: 'Staff/Instructors')
 
 User.create(name: 'Pat Santucci', mod_id: m2.id)
 User.create(name: 'Ines Guerrero', mod_id: m2.id)
+
+Location.create(name: "Mod 1")
+Location.create(name: "Mod 2")
+Location.create(name: "Mod 3")
+Location.create(name: "Mod 4")
+Location.create(name: "Mod 5")
+Location.create(name: "Instructors/Staff")
+Location.create(name: "TCFs Mods 1&2")
+Location.create(name: "TCFs Mods 3&4&5")
+Location.create(name: "Borg")
+Location.create(name: "Turing")
+Location.create(name: "Fox")
+Location.create(name: "Sofas Mod 2&3")
+Location.create(name: "Kitchen")
+Location.create(name: "Lounge")
+Location.create(name: "Lovelace")
+Location.create(name: "Berners-Lee")
+
+

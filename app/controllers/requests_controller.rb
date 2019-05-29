@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: %i[edit update destroy snag]
   before_action :include_beers, only: %i[new create edit update]
+  before_action :find_locations, only: %i[new create edit update]
 
   def open; end
 
@@ -52,4 +53,8 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:requester_id, :snagger_id, :beer_id)
   end
+
+  def find_locatons 
+    @locations = Location.all 
+  end 
 end
