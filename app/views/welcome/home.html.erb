@@ -1,4 +1,6 @@
 <h1>Welcome to Snag</h1>
+
+
 <% if @current_snag.nil?%>
   <ul>
     <% @snags.each do |snag| %>
@@ -11,23 +13,27 @@
         <% end %>
       </li>
     <% end %>
-    <div><%= link_to "ASK FOR A SNAG", new_request_path %></div>
   </ul>
 
 <% else %>
 
   <h4>You're currently snagging <%= @current_snag_for.name %> a <%= @current_snag.beer.name %> - they're waiting in <%= @current_snag.location.name %>!</h4>
+  <% @snags.each do |snag| %>
   <%= form_tag(request_path, method:"snag") do %>
     <%= hidden_field_tag :id, snag.id %>
     <%= hidden_field_tag :request.status, "closed" %>
     <%= submit_tag "Beer Delivered" %>
   <%end%>
+  <% @snags.each do |snag| %>
   <%= form_tag(request_path, method:"snag") do %>
     <%= hidden_field_tag :id, snag.id %>
     <%= hidden_field_tag :request.status, "open" %>
     <%= submit_tag "Sorry, can't Snag it!" %>
   <%end%>
 <% end %>
+
+
+<div><%= link_to "ASK FOR A SNAG", new_request_path %></div>
 
 
 

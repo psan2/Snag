@@ -3,13 +3,15 @@
 <p>
   <%= @requester.name %> is in <%= @location.name %>, waiting anxiously.
 </p>
-<%= form_tag(request_path, method:"snag") do %>
-    <%= hidden_field_tag :id, snag.id %>
-    <%= hidden_field_tag :request.status, "closed" %>
+<%= form_tag(request_path, method:"patch") do %>
+    <%= hidden_field_tag :id, @request.id %>
+    <%= hidden_field_tag :status, "closed" %>
     <%= submit_tag "Beer Delivered" %>
   <%end%>
-  <%= form_tag(request_path, method:"snag") do %>
-    <%= hidden_field_tag :id, snag.id %>
-    <%= hidden_field_tag :request.status, "open" %>
+
+  <%= form_tag(request_path, method:"patch") do %>
+    <%= hidden_field_tag :id, @request.id %>
+    <%= hidden_field_tag :status, "open" %>
     <%= submit_tag "Sorry, can't Snag it!" %>
   <%end%>
+

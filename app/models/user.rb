@@ -15,4 +15,6 @@ class User < ApplicationRecord
   def current_snag
     Request.find_by(snagger_id:self.id, status:"in progress")
   end
+
+  
 end

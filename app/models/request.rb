@@ -24,4 +24,5 @@ class Request < ApplicationRecord
     if (15..24).include?
     end
   end
+
 end
