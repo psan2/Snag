@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: %i[show destroy snag]
-  before_action :include_beers, only: %i[new]
-  before_action :include_locations, only: %i[new]
+  before_action :include_beers, only: %i[new create]
+  before_action :include_locations, only: %i[new create]
 
   def snag
     @request.snagger_id = params["snagger_id"]
