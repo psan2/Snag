@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+		byebug
 		if @user.save
 			flash[:success] = 'Welcome!'
 			auto_login(@user)

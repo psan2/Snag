@@ -9,7 +9,6 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    byebug
     if @request.valid?
       @request.save
       redirect_to root_path
