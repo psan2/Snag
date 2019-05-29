@@ -1,11 +1,7 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[show edit update destroy snag]
-  before_action :include_beers, only: %i[new create edit update]
-  before_action :find_locations, only: %i[new create edit update]
-
-  def open; end
-
-  def index; end
+  before_action :set_request, only: %i[show destroy snag]
+  before_action :include_beers, only: %i[new]
+  before_action :include_locations, only: %i[new]
 
   def snag
     @request.snagger_id = params["snagger_id"]
@@ -22,6 +18,7 @@ class RequestsController < ApplicationController
   def show
     @requester = User.find(@request.requester_id)
     @snagger = User.find(@request.snagger_id)
+    @location = @request.location
     @beer = @request.beer
   end
 
@@ -30,7 +27,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(beer_id:request_params["beer_id"], requester_id:current_user.id)
+    @request = Request.new(request_params)
     if @request.valid?
       @request.save
       redirect_to root_path
@@ -38,10 +35,6 @@ class RequestsController < ApplicationController
       render :new
     end
   end
-
-  def edit; end
-
-  def update; end
 
   def destroy; end
 
@@ -56,10 +49,10 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:requester_id, :snagger_id, :beer_id)
+    params.require(:request).permit(:requester_id, :beer_id, :location_id)
   end
 
-  def find_locations 
-    @locations = Location.all 
-  end 
+  def include_locations
+    @locations = Location.all
+  end
 end
