@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/log_in', to: 'sessions#new', as: :log_in
   get '/log_out', to: 'sessions#destroy', as: :log_out
 
-  get '/open', to: 'requests#open'
+  post '/close', to: 'requests#close'
   post '/snag', to: 'requests#snag'
   get '/confirm', to: 'requests#confirm'
 
