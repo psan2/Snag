@@ -13,6 +13,7 @@
   </p>
 
     <%= f.hidden_field :requester_id, value:current_user.id %>
+    <%= f.hidden_field :status, value:"open" %>
   <%= f.submit %>
 
 <% end %>

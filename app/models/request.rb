@@ -14,7 +14,7 @@ class Request < ApplicationRecord
   belongs_to :location
 
   validates_with MyValidator
-  validates :status, inclusion: { in: %w(open, closed, in progress)}
+  validates :status, inclusion: { in: ["open", "closed", "in progress"]}
 
   def self.snags
     Request.all.select { |snag| snag.snagger_id.nil? && not(snag.requester_id.nil?) }

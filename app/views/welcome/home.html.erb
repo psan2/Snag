@@ -1,7 +1,7 @@
 <h1>Welcome to Snag</h1>
 
 <% @snags.each do |snag| %>
-  <% if @snag.status == "in progress" && @snagger_id == current_user.id%>
+  <% if snag.status == "in progress" && @snagger_id == current_user.id%>
     <h4>You are snagging a beer, let us know when you have it!</h4>
     <%else%>
       <ul>
