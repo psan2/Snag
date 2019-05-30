@@ -17,7 +17,7 @@
   <tbody>
     <tr>
     <% @beers.each do |beer| %>
-      <td>Image</td>
+      <td><%= beer.image %></td>
       <td><%= beer.name %></td>
       <td><%= beer.abv %>% ABV</td>
       <td><%= beer.description %></td>
