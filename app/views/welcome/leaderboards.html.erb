@@ -1,18 +1,89 @@
 <div class="mt-3">
 <div class="ml-3">
 <h1>Leaderboards</h1>
-
+<br>
+<div>
 <h3>Most Snagtastic</h3>
 <h5>🍻 These folks snag more than they request 🍻</h5>
-  <table style="width:100%">
-      <% @users.sort_by {| |each do |user| %>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Times they snagged</th>
+      <th>Times they requested</th>
+      <th>Ratio</th>
+    </tr>
+    <% @users.sort_by {|user| user.snag_ratio }.reverse![0..5].each do |user| %>
       <tr>
-        <th><%=  %></th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Age</th>
+        <td><%= user.name %></td>
+        <td><%= user.completed_snags.length %></td>
+        <td><%= user.fulfilled_requests.length %></td>
+        <td><%= '%.2f' % user.snag_ratio %></td>
       </tr>
-      <% end %>
+    <% end %>
   </table>
-  </div>
-  </div>
+</div>
+
+
+<br>
+<br>
+
+<div>
+  <h3>Most Prolific Snaggers</h3>
+  <h5>🍻 These snaggers have helped out more people 🍻</h5>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>People they've snagged for</th>
+    </tr>
+    <% @users.sort_by {|user| user.unique_receivers.length }.reverse![0..5].each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.unique_receivers.length %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<br>
+<br>
+
+<div>
+  <h3>The Mooch List</h3>
+  <h5> 😬 These folks have great friends... 😬 </h5>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Times they snagged</th>
+      <th>Times they requested</th>
+      <th>Ratio</th>
+    </tr>
+    <% @users.sort_by {|user| user.snag_ratio }[0..5].each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.completed_snags.length %></td>
+        <td><%= user.fulfilled_requests.length %></td>
+        <td><%= '%.2f' % user.snag_ratio %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<br>
+<br>
+
+<div>
+  <h3>🍺 Most Prolific...well. 🍺</h3>
+  <h5> 😬 These folks have great friends... 😬 </h5>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Requests</th>
+    </tr>
+    <% @users.sort_by {|user| user.fulfilled_requests.length }.reverse![0..5].each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.fulfilled_requests.length %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
