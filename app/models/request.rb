@@ -16,7 +16,7 @@ class Request < ApplicationRecord
 
   def self.open
     Request.all.select{ |request| request.status == "open" && (request.updated_at + 2.hours).future?  }
-      .sort_by{ |request| request.updated_at}
+      .sort_by{ |request| request.updated_at}.reverse!
   end
 
   def self.bar_open?
