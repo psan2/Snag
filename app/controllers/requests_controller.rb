@@ -10,13 +10,13 @@ class RequestsController < ApplicationController
   end
 
   def new
-    if !(Request.bar_open?)
-      redirect_to closed_path
-    else
+    # if !(Request.bar_open?)
+    #   redirect_to closed_path
+    # else
       if
         @request = Request.new
       end
-    end
+    # end
   end
 
   def create

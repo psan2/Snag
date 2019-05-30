@@ -30,15 +30,15 @@
               <a class="nav-link" href=<%= new_request_path %>>Request a Beer</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Snag a beer</a>
+              <a class="nav-link" href=<%= requests_path %>>Snag a beer</a>
             </li>
             <% if logged_in? %>
               <li class="nav-item">
-                <a class="nav-link" href=<% log_out_path %>>Logout</a>
+                <a class="nav-link" href=<%= log_out_path %>>Logout</a>
               </li>
             <%else%>
               <li class="nav-item">
-                <a class="nav-link" href=<% sign_up_path %>>Login/Sign Up</a>
+                <a class="nav-link" href=<%= sign_up_path %>>Login/Sign Up</a>
               </li>
             <%end%>
           </ul>

@@ -46,6 +46,8 @@ class BeersController < ApplicationController
         redirect_to brands_path
     end 
 
+    private
+
     def beer_params 
         params.require(:beer).permit(:name, :abv, :description)
     end 

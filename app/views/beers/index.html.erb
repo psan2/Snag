@@ -1,11 +1,14 @@
 <h1>All Beers</h1>
 
+<% if current_user.currently_requesting %>
+  <p><a href="/requests/new" class="btn btn-info btn-sm" role="button" aria-pressed="true">Request a Beer!</a></p>
+<%end%>
+
 <% @beers.each do |beer| %>
   <div>
     <h2><%= beer.name %></h2>
     <p><%= beer.abv %>% ABV</p>
     <p><%= beer.description %></p>
-		<h4><%= button_to "Request Snag", new_request_path %></h4>
 	  <br>
   </div>
 
