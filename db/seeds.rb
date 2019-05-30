@@ -12,6 +12,7 @@ Beer.destroy_all
 User.destroy_all
 Mod.destroy_all
 Location.destroy_all
+Request.destroy_all
 
 Beer.create(name: 'London Pale Ale', abv: 4.3, description: 'British and American hops unite to make a sessionable pale ale that’s packed with citrus flavour. Now that’s a special relationship.')
 Beer.create(name: 'London Lager', abv: 4.5, description: 'East Anglian malt and Goldings hops combine for a crisp, refreshing lager that’s full of flavour. A modern classic, straight from London’s back garden.')
@@ -25,8 +26,25 @@ m4 = Mod.create(name: 'Mod 4')
 m5 = Mod.create(name: 'Mod 5')
 ms = Mod.create(name: 'Staff/Instructors')
 
-User.create(name: 'Pat Santucci', mod_id: m2.id)
-User.create(name: 'Ines Guerrero', mod_id: m2.id)
+User.create(username:'Pat', name: 'Pat', password:"password", mod_id: m2.id)
+User.create(username: 'Ines', name: 'Ines', password:"password", mod_id: m2.id)
+User.create(username: 'Amari', name: 'Amari', password:"password", mod_id: m2.id)
+User.create(username: 'Zubair', name: 'Zubair', password:"password", mod_id: m2.id)
+User.create(username: 'Kat', name: 'Kat', password:"password", mod_id: m2.id)
+User.create(username: 'Ayleen', name: 'Ayleen', password:"password", mod_id: m2.id)
+User.create(username: 'Ross', name: 'Ross', password:"password", mod_id: m2.id)
+User.create(username: 'Aiden', name: 'Aiden', password:"password", mod_id: m2.id)
+User.create(username: 'Miao', name: 'Miao', password:"password", mod_id: m2.id)
+User.create(username: 'Lauren', name: 'Lauren', password:"password", mod_id: m2.id)
+User.create(username: 'Marcus', name: 'Marcus', password:"password", mod_id: m2.id)
+User.create(username: 'Marco', name: 'Marco', password:"password", mod_id: m2.id)
+User.create(username: 'Anthea', name: 'Anthea', password:"password", mod_id: m2.id)
+User.create(username: 'Patrick', name: 'Patrick', password:"password", mod_id: m3.id)
+User.create(username: 'Kevin', name: 'Kevin', password:"password", mod_id: m3.id)
+User.create(username: 'Xabi', name: 'Xabi', password:"password", mod_id: m3.id)
+User.create(username: 'Fran', name: 'Fran', password:"password", mod_id: m3.id)
+User.create(username: 'Sam', name: 'Sam', password:"password", mod_id: ms.id)
+User.create(username: 'Ian', name: 'Ian', password:"password", mod_id: ms.id)
 
 Location.create(name: "the Mod 1 area")
 Location.create(name: "the Mod 2 area")
@@ -45,4 +63,14 @@ Location.create(name: "the main lounge")
 Location.create(name: "Lovelace")
 Location.create(name: "Berners-Lee")
 
+status = ["open", "closed", "bailed", "cancelled", "in progress"]
 
+500.times do
+  Request.create(
+    requester:User.all.sample,
+    snagger:User.all.sample,
+    beer:Beer.all.sample,
+    location:Location.all.sample,
+    status:status.sample
+    )
+  end

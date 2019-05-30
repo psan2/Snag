@@ -20,20 +20,37 @@ class User < ApplicationRecord
     Request.find_by(requester:self, :status => ["open", "in progress"] )
   end
 
-<<<<<<< HEAD
   def completed_snags
-    Requests.where(snagger:self, status:"closed")
+    snags = Request.where(snagger:self, status:"closed")
+    if snags.length > 0
+      snags
+    else
+      []
+    end
   end
-=======
- 
->>>>>>> 2f825e8c133ee6aca9a9c7d60a78391b63ccb1b4
 
   def fulfilled_requests
-    Requests.where(requester:self, status:"closed")
+    requests = Request.where(requester:self, status:"closed")
+    if requests.length > 0
+      requests
+    else
+      []
+    end
   end
 
   def snag_ratio
-    ratio = (completed_snags.length.to_f)/
+    ratio = (completed_snags.length.to_f)/fulfilled_requests.length
+    if completed_snags.length > 0 && fulfilled_requests.length == 0
+      1.0
+    elsif fulfilled_requests.length == 0
+      0.0
+    else
+      ratio
+    end
+  end
+
+  def unique_receivers
+    completed_snags.map { |request| request.requester}
   end
 
   private
