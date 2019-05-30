@@ -1,7 +1,7 @@
 <div class="m-4">
-<h1>Welcome to Snag</h1>
+<h2>WELCOME TO SNAG</h2>
 <% if @currently_snagging.nil?%>
-  <h3>Open Requests</h3>
+  <h4>Open Requests</h4>
   <ul>
     <% @open_requests.each do |request| %>
       <li><%= request.beer.name %>
