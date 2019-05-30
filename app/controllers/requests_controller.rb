@@ -1,10 +1,11 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[update show destroy]
+  before_action :set_request, only: %i[update show destroy feedback feedback_path]
   before_action :include_beers, only: %i[new create]
   before_action :include_locations, only: %i[new create]
 
   def index
     @open_requests = Request.open
+    @currently_snagging = current_user.currently_snagging
   end
 
   def new
@@ -42,7 +43,9 @@ class RequestsController < ApplicationController
       @request.save
       if @request.status == "in progress"  #if the request is still open after the change, go to its show page - else, go back to the index page
         redirect_to @request
-      elsif
+      elsif @request.status == "closed"
+        redirect_to requests_feedback_path(@request)
+      else
         redirect_to requests_path
       end
 
@@ -67,7 +70,18 @@ class RequestsController < ApplicationController
     @beer = @request.beer
   end
 
-  def destroy; end
+  def feedback
+  end
+
+  def feedback_path
+    beer = @request.beer
+    floor = Floor.find_by(floor_number:feedback_params[:floor])
+    keg = Keg.find_by(floor_id:floor.id,beer_id:beer.id)
+
+    keg.update(full:feedback_params[:full])
+    floor.update(cups:feedback_params[:cups])
+    redirect_to requests_path
+  end
 
   private
 
@@ -81,6 +95,10 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:requester_id, :snagger_id, :beer_id, :location_id, :status)
+  end
+
+  def feedback_params
+    params.permit(:full, :cups, :floor)
   end
 
   def include_locations

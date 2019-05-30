@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2019_05_30_133529) do
+=======
 ActiveRecord::Schema.define(version: 2019_05_30_130925) do
+>>>>>>> ae5131c363f83b5fc1f108b99902b208e5e7fd28
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +26,23 @@ ActiveRecord::Schema.define(version: 2019_05_30_130925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+  end
+
+  create_table "floors", force: :cascade do |t|
+    t.integer "floor_number"
+    t.string "cups"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "kegs", force: :cascade do |t|
+    t.bigint "floor_id"
+    t.bigint "beer_id"
+    t.boolean "full"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beer_id"], name: "index_kegs_on_beer_id"
+    t.index ["floor_id"], name: "index_kegs_on_floor_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -57,4 +78,6 @@ ActiveRecord::Schema.define(version: 2019_05_30_130925) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "kegs", "beers"
+  add_foreign_key "kegs", "floors"
 end
