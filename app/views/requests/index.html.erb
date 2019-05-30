@@ -1,5 +1,5 @@
 <div class="m-4">
-<h2>WELCOME TO SNAG</h2>
+<h1>Welcome to Snag</h1>
 <% if @currently_snagging.nil?%>
   <h5>OPEN REQUESTS</h5>
   <br>
@@ -41,28 +41,6 @@
   <% end %>
 
 <% end %>
-<br>
-<% if @currently_requesting.nil? %>
-  <div>
-    <%= form_tag new_request_path, method:"get" do %>
-      <%= submit_tag 'Request a beer', class: 'btn btn-info btn-lg' %>
-    <% end %>
-  </div>
-<% else %>
-  <% if @currently_requesting.status == "open" %>
-    <div>You're currently requesting a <%= @currently_requesting.beer.name %>.  We'll let you know when someone's bringing it!</div>
-    <%= form_tag new_request_path, method:"patch" do %>
-      <%= hidden_field_tag :id, @currently_requesting.id %>
-      <%= hidden_field_tag "request[status]", "closed" %>
-      <%= submit_tag 'Cancel this request', class: 'btn btn-secondary btn-lg' %>
-    <% end %>
-
-  <% elsif @currently_requesting.status == "in progress" %>
-    <div>Your <%= @currently_requesting.beer.name %> is on the way, courtesy of <%= @currently_requesting.snagger.name %>!  </div>
-  <% end %>
-<% end %>
-</div>
-
 
 
 

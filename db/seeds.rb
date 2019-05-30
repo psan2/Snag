@@ -8,11 +8,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Beer.destroy_all
+Keg.destroy_all
+Floor.destroy_all
 User.destroy_all
 Mod.destroy_all
 Location.destroy_all
 Request.destroy_all
+Beer.destroy_all
 
 pale = Beer.create(name: 'London Pale Ale', abv: 4.3, description: 'British and American hops unite to make a sessionable pale ale that’s packed with citrus lager flavour. Now that’s a special relationship.', image: "pale-ale.png")
 lager = Beer.create(name: 'London Lager', abv: 4.5, description: 'East Anglian malt and Goldings hops combine for a crisp, refreshing lager that’s full of flavour. A modern classic, straight from London’s back garden.', image: "lager.png")

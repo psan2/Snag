@@ -1,5 +1,6 @@
 <div class="m-4">
-<h1>Want me to bring one back for you?</h1>
+<% if @currently_requesting.nil? %>
+  <h1>Want me to bring one back for you?</h1>
 
 <div>
 <%= form_for @request do |f| %>
@@ -20,4 +21,20 @@
 <% end %>
 </div>
 </div>
+<% else %>
+  <% if @currently_requesting.status == "open" %>
+    <h4>You're currently requesting a <%= @currently_requesting.beer.name %>.  We'll let you know when someone's bringing it!</h4>
+    <%= form_tag new_request_path, method:"patch" do %>
+      <%= hidden_field_tag :id, @currently_requesting.id %>
+      <%= hidden_field_tag "request[status]", "closed" %>
+      <%= submit_tag 'Cancel this request', class: 'btn btn-secondary btn-lg' %>
+    <% end %>
+
+  <% elsif @currently_requesting.status == "in progress" %>
+    <h4>Your <%= @currently_requesting.beer.name %> is on the way, courtesy of <%= @currently_requesting.snagger.name %>!  </h4>
+  <% end %>
+<% end %>
+</div>
+
+
 
