@@ -19,7 +19,7 @@
   </head>
 
   <body>
-      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar sticky-top navbar navbar-dark bg-dark">
         <% if logged_in? %>
           <a class="navbar-brand" href=<%= requests_path %>>SNAG</a>
         <% else %>
@@ -53,7 +53,7 @@
       </nav>
 
       
-
+    <div class="m-3">
       <% if flash.any? %>
         <% flash.each do |type, message| %>
           <ul>
@@ -69,6 +69,7 @@
           <% end %>
         <% end %>
         <% flash.delete(:error) %>
+    </div>
 
 
     <%= yield %>
