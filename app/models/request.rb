@@ -15,7 +15,8 @@ class Request < ApplicationRecord
   end
 
   def self.open
-    Request.all.select { |snag| snag.status == "open" && (snag.updated_at + 2.hours).future?  }
+    Request.all.select{ |request| request.status == "open" && (request.updated_at + 2.hours).future?  }
+      .sort_by{ |request| request.updated_at}
   end
 
   def self.bar_open?

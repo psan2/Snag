@@ -4,7 +4,11 @@
   <h4>Open Requests</h4>
   <ul>
     <% @open_requests.each do |request| %>
-      <li><%= request.beer.name %>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <li><%= request.beer.name %> for <%= request.requester.name %>
+      </div>
+      <div class="form-group col-md-2">
         <%= form_tag(request_path(request), method:"patch") do %>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <%= hidden_field_tag :id, request.id %>
@@ -12,7 +16,9 @@
           <%= hidden_field_tag "request[status]", "in progress" %>
           <%= submit_tag "SNAG IT", class: 'btn btn-info btn-sm' %>
         <% end %>
-      </li>
+      </div>
+        </li>
+      </div>
     <% end %>
   </ul>
 
@@ -22,7 +28,7 @@
   <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
     <%= hidden_field_tag :id, @currently_snagging.id %>
     <%= hidden_field_tag "request[status]", "closed" %>
-    <%= submit_tag "Beer Delivered", class: 'btn btn-sucess btn-lg' %>
+    <%= submit_tag "Beer Delivered", class: 'btn btn-success btn-lg' %>
   <%end%>
 
   <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
@@ -33,7 +39,8 @@
   <% end %>
 
 <% end %>
-
+<br>
+<br>
 <% if @currently_requesting.nil? %>
   <div>
     <%= form_tag new_request_path, method:"get" do %>

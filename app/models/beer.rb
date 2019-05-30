@@ -1,5 +1,7 @@
 class Beer < ApplicationRecord
     has_many :requests
+    has_many :kegs
+    has_many :floors, through: :kegs
 
     validates :name, presence: true
     validates :name, uniqueness: true
