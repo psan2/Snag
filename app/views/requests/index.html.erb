@@ -1,8 +1,8 @@
 <div class="m-4">
 <h2>WELCOME TO SNAG</h2>
 <% if @currently_snagging.nil?%>
-  <h4>Open Requests</h4>
-  <ul></ul>
+  <h5>OPEN REQUESTS</h5>
+  <ul>
     <% @open_requests.each do |request| %>
     <div class="form-row">
       <div class="form-group col-md-2">
@@ -14,7 +14,7 @@
           <%= hidden_field_tag :id, request.id %>
           <%= hidden_field_tag "request[snagger_id]", current_user.id %>
           <%= hidden_field_tag "request[status]", "in progress" %>
-          <%= submit_tag "SNAG IT", class: 'btn btn-info btn-sm' %>
+          <%= submit_tag "SNAG IT", class: 'btn btn-secondary btn-sm' %>
         <% end %>
       </div>
         </li>
@@ -39,7 +39,6 @@
   <% end %>
 
 <% end %>
-<br>
 <br>
 <% if @currently_requesting.nil? %>
   <div>
