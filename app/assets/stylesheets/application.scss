@@ -10,20 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require_tree 
  *= require_self
  */
 
-body {
-    background-image: url("../beer-wallpaper.jpg");
-    background-position-x: center;
-    background-position-y: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-origin: initial;
-    background-clip: initial;
-    background-size: cover;
-    opacity: 1;
-    height: 100%;
-}
+    body {
+        background: image-url('beer-wallpaper.jpg');
+        background-position-x: center;
+        background-position-y: center;
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-origin: initial;
+        background-clip: initial;
+        background-size: cover;
+        height: 100%;
+    }
+
