@@ -1,12 +1,10 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: %i[update show destroy feedback feedback_path]
-  before_action :include_beers, only: %i[new create]
+  before_action :index_pack, only: %i[index update]
+  before_action :include_beers, only: %i[index new create]
   before_action :include_locations, only: %i[new create]
 
   def index
-    @open_requests = Request.open
-    @currently_snagging = current_user.currently_snagging
-    @currently_requesting = current_user.currently_requesting
   end
 
   def new
@@ -50,7 +48,6 @@ class RequestsController < ApplicationController
 
     else
       flash[:error] = @request.errors.full_messages.join
-      @open_requests = Request.open
       render :index
     end
 
@@ -86,6 +83,14 @@ class RequestsController < ApplicationController
 
   def set_request
     @request = Request.find(params[:id])
+  end
+
+  def index_pack
+    @open_requests = Request.open
+    @currently_snagging = current_user.currently_snagging
+    @currently_requesting = current_user.currently_requesting
+    @kegs = Keg.all
+    @floors = Floor.all
   end
 
   def include_beers

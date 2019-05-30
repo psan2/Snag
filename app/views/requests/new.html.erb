@@ -24,9 +24,9 @@
 <% else %>
   <% if @currently_requesting.status == "open" %>
     <h4>You're currently requesting a <%= @currently_requesting.beer.name %>.  We'll let you know when someone's bringing it!</h4>
-    <%= form_tag new_request_path, method:"patch" do %>
+    <%= form_tag request_path(@currently_requesting), method:"patch" do %>
       <%= hidden_field_tag :id, @currently_requesting.id %>
-      <%= hidden_field_tag "request[status]", "closed" %>
+      <%= hidden_field_tag "request[status]", "cancelled" %>
       <%= submit_tag 'Cancel this request', class: 'btn btn-secondary btn-lg' %>
     <% end %>
 
