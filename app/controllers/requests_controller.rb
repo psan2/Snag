@@ -3,19 +3,16 @@ class RequestsController < ApplicationController
   before_action :include_beers, only: %i[new create]
   before_action :include_locations, only: %i[new create]
 
+
   def index
     @open_requests = Request.open
-    @currently_snagging = current_user.currently_snagging
-    @currently_requesting = current_user.currently_requesting
   end
 
   def new
     if !(Request.bar_open?)
       redirect_to closed_path
     else
-      if
-        @request = Request.new
-      end
+      @request = Request.new
     end
   end
 
@@ -25,6 +22,7 @@ class RequestsController < ApplicationController
       @request.save
       redirect_to requests_path
     else
+      flash[:error] = @request.errors.full_messages.join
       render :new
     end
   end
@@ -39,7 +37,7 @@ class RequestsController < ApplicationController
         redirect_to requests_path
       end
     else
-      flash[:error] = @request.errors[:error].join
+      flash[:error] = @request.errors.full_messages.join
       @open_requests = Request.open
       render :index
     end

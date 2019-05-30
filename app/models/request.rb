@@ -1,28 +1,34 @@
 # frozen_string_literal: true
-
-class MyValidator < ActiveModel::Validator
-  def validate(request)
-    unless request.requester_id != request.snagger_id
-      request.errors[:error] << "Can't snag your own beer! That's what friends are for :)"
-    end
-  end
-end
-
 class Request < ApplicationRecord
   belongs_to :requester, :class_name => :User, :foreign_key => "requester_id"
   belongs_to :snagger, :class_name => :User, :foreign_key => "snagger_id", optional: true
   belongs_to :beer
   belongs_to :location
 
-  validates_with MyValidator
+  validate :cannot_snag_own_beer
+  validate :cannot_open_multiple_snags
   validates :status, inclusion: { in: ["open", "closed", "in progress"]}
+
+  def cannot_snag_own_beer
+    if requester_id == snagger_id
+      errors.add(:snagger, "cannot be the same as requester, that's what friend are for!")
+    end
+  end
+
+  def cannot_open_multiple_snags
+    if requester.currently_requesting
+      errors.add(:requester, "cannot have multiple requests open")
+    end
+  end
 
   def self.open
     Request.all.select { |snag| snag.snagger_id.nil? && not(snag.requester_id.nil?) && snag.status == "open" && (snag.updated_at + 2.hours).future?  }
   end
 
   def self.bar_open?
-    (15...24).include?(Time.now.hour) ? true : false
+    # commented out for testing - this function closes the bar before 3 PM
+    true
+    # (15...24).include?(Time.now.hour) ? true : false
   end
 
 end
