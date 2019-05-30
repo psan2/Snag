@@ -1,27 +1,91 @@
 <div class="m-4">
 <h1>Welcome to Snag</h1>
-<% if @currently_snagging.nil?%>
+
 <table class="table table-borderless" style="width:50%">
   <thead>
     <tr>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th colspan="2" scope="col"><h5 align="center">GROUND FLOOR</h5></th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-    <% @beers.each do |beer| %>
-      <td><%= image_tag(beer.image)%></td>
-      <td><h5><%= beer.name %></h5></td>
-      <td><%= beer.abv %>% ABV</td>
-      <td><%= beer.description %></td>
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[0].full %>
+          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <% else %>
+          <%= image_tag("/img/beer_empty.png",height:"250")%>
+        <% end %>
+        <br>
+        <%= @floors.find { |floor| floor.floor_number == 0}.kegs[0].beer.name %>
+      </td>
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[1].full %>
+          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <% else %>
+          <%= image_tag("/img/beer_empty.png",height:"250")%>
+        <% end %>
+        <br>
+        <%= @floors.find { |floor| floor.floor_number == 0}.kegs[1].beer.name %>
+      </td>
     </tr>
-    <%end%>
+    <tr>
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[2].full %>
+          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <% else %>
+          <%= image_tag("/img/beer_empty.png",height:"250")%>
+        <% end %>
+        <br>
+        <%= @floors.find { |floor| floor.floor_number == 0}.kegs[2].beer.name %>
+      </td>
+
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[3].full %>
+          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <% else %>
+          <%= image_tag("/img/beer_empty.png",height:"250")%>
+        <% end %>
+        <br>
+        <%= @floors.find { |floor| floor.floor_number == 0}.kegs[3].beer.name %>
+      </td>
+    </tr>
   </tbody>
 </table>
 
+<table class="table table-borderless" style="width:50%">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col"><h5 align="center">FLOOR 5</h5></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 5}.kegs[0].full %>
+          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <% else %>
+          <%= image_tag("/img/beer_empty.png",height:"250")%>
+        <% end %>
+        <br>
+        <%= @floors.find { |floor| floor.floor_number == 5}.kegs[0].beer.name %>
+      </td>
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 5}.kegs[1].full %>
+          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <% else %>
+          <%= image_tag("/img/beer_empty.png",height:"250")%>
+        <% end %>
+        <br>
+        <%= @floors.find { |floor| floor.floor_number == 5}.kegs[1].beer.name %>
+      </td>
+    </tr>
+    </tr>
+  </tbody>
+</table>
+
+<% if @currently_snagging.nil?%>
   <h5>OPEN REQUESTS</h5>
   <br>
   <ul>
