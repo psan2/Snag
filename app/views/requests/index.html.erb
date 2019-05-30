@@ -2,6 +2,7 @@
 <h2>WELCOME TO SNAG</h2>
 <% if @currently_snagging.nil?%>
   <h5>OPEN REQUESTS</h5>
+  <br>
   <ul>
     <% @open_requests.each do |request| %>
     <div class="form-row">
@@ -23,14 +24,15 @@
   </ul>
 
 <% else %>
-
+  <br>
   <h4>You're currently snagging <%= @currently_snagging.requester.name %> a <%= @currently_snagging.beer.name %> - they're waiting in <%= @currently_snagging.location.name %>!</h4>
+  <br>
   <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
     <%= hidden_field_tag :id, @currently_snagging.id %>
     <%= hidden_field_tag "request[status]", "closed" %>
     <%= submit_tag "Beer Delivered", class: 'btn btn-success btn-lg' %>
   <%end%>
-
+  <br>
   <%= form_tag(request_path(@currently_snagging), method:"patch") do %>
     <%= hidden_field_tag :id, @currently_snagging.id %>
     <%= hidden_field_tag "request[status]", "open" %>
