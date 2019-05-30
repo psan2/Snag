@@ -2,13 +2,12 @@
 <h1>Nice work!</h1>
 
 <h4>Help out your snaggers 👍</h4>
-<br>
     <%= form_tag(requests_feedback_path(@request), method:"patch") do %>
       <%= hidden_field_tag :id, @request.id %>
-
+<br>
 <% if @request.beer.floors.length > 1 %>
   <div>
-    What floor did you get it from? <br>
+    <h5>What floor did you get it from?</h5>
       <%= radio_button_tag(:floor, 0, :checked => true) %>
       <%= label_tag(:floor_0, "Ground floor") %> <br>
 
@@ -18,17 +17,18 @@
 <% else %>
   <%= hidden_field_tag :floor, 0 %>
 <% end %>
+<br>
 <div>
-  Was there still beer in the keg? <br>
+  <h5>Was there still beer in the keg?</h5>
       <%= radio_button_tag(:full, true, :checked => true) %>
       <%= label_tag(:full_true, "Still going when I left") %> <br>
 
       <%= radio_button_tag(:full, false) %>
       <%= label_tag(:full_false, "None left, sorry") %> <br>
 </div>
-
+<br>
 <div>
-  Were there enough cups left? <br>
+  <h5>Were there enough cups left?</h5>
       <%= radio_button_tag(:cups, "Plenty left", :checked => true) %>
       <%= label_tag(:cups_Plenty_left, "Plenty left") %> <br>
 
