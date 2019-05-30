@@ -3,14 +3,17 @@ class RequestsController < ApplicationController
   before_action :include_beers, only: %i[new create]
   before_action :include_locations, only: %i[new create]
 
-
   def index
     @open_requests = Request.open
   end
 
   def new
-    if !(Request.bar_open?)
+    if !(Request.bar_open?) #check if the taps are open
       redirect_to closed_path
+    elsif current_user.currently_requesting #check if this user already has a request open
+      @open_requests = Request.open
+      flash[:error] = "You already have a request open!"
+      render :index
     else
       @request = Request.new
     end
@@ -30,17 +33,25 @@ class RequestsController < ApplicationController
   def update
     @request.update(request_params)
     if @request.valid?
+      if @request.status == "bailed"    #save bailed snag for records, create a replacement snag to reopen it to snaggers
+        replacement = @request.dup
+        replacement.update(snagger_id:nil, status:"open")
+        replacement.save
+      end
+
       @request.save
-      if @request.status == "in progress"
+      if @request.status == "in progress"  #if the request is still open after the change, go to its show page - else, go back to the index page
         redirect_to @request
-      else
+      elsif
         redirect_to requests_path
       end
+
     else
       flash[:error] = @request.errors.full_messages.join
       @open_requests = Request.open
       render :index
     end
+
   end
 
   def show

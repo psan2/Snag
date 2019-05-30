@@ -1,0 +1,14 @@
+<h1>Leaderboards</h1>
+
+<h3>Most Snagtastic</h3>
+<h5>🍻 These folks snag more than they request 🍻</h5>
+  <table style="width:100%">
+      <% @users.sort_by {| |each do |user| %>
+      <tr>
+        <th><%=  %></th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+      </tr>
+      <% end %>
+  </table>

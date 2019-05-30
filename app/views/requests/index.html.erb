@@ -48,6 +48,7 @@
       <%= hidden_field_tag "request[status]", "closed" %>
       <%= submit_tag 'Cancel this request' %>
     <% end %>
+
   <% elsif @currently_requesting.status == "in progress" %>
     <div>Your <%= @currently_requesting.beer.name %> is on the way, courtesy of <%= @currently_requesting.snagger.name %>!  </div>
   <% end %>

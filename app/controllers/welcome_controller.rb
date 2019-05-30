@@ -5,6 +5,12 @@ class WelcomeController < ApplicationController
   def home
   end
 
+  def leaderboards
+    @users = User.all
+    @requests = Request.all
+    @beers = Beer.all
+  end
+
   def closed
   end
 

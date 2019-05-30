@@ -12,9 +12,7 @@
 
   <%= form_tag(request_path, method:"patch") do %>
     <%= hidden_field_tag :id, @request.id %>
-    <%= hidden_field_tag "request[status]", "open" %>
-    <%= hidden_field_tag "request[snagger]", nil %>
-
+    <%= hidden_field_tag "request[status]", "bailed" %>
     <%= submit_tag "Sorry, can't Snag it!" %>
   <%end%>
   </div>
