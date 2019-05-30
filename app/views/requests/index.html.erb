@@ -1,6 +1,27 @@
 <div class="m-4">
 <h1>Welcome to Snag</h1>
 <% if @currently_snagging.nil?%>
+<table class="table table-borderless" style="width:50%">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @beers.each do |beer| %>
+      <td><%= image_tag(beer.image)%></td>
+      <td><h5><%= beer.name %></h5></td>
+      <td><%= beer.abv %>% ABV</td>
+      <td><%= beer.description %></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
   <h5>OPEN REQUESTS</h5>
   <br>
   <ul>
