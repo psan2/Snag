@@ -2,6 +2,26 @@
 <div class="ml-3">
 <h1>Leaderboards</h1>
 <br>
+
+<div>
+  <h3>🍺 Most Popular Beers 🍺</h3>
+  <h5> 🎉 Our most requested beers 🎉 </h5>
+  <table style="width:50%">
+    <tr>
+      <th>Beer</th>
+      <th>Times Requested</th>
+    </tr>
+    <% Beer.most_popular.sort_by {|beer, count| count }.reverse!.each do |beer| %>
+      <tr>
+        <td><%= beer[0].name %></td>
+        <td><%= beer[1] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<br>
+
 <div>
 <h3>Most Snagtastic</h3>
 <h5>🍻 These folks snag more than they request 🍻</h5>
@@ -73,7 +93,7 @@
 
 <div>
   <h3>🍺 Most Prolific...well. 🍺</h3>
-  <h5> 😬 These folks have great friends... 😬 </h5>
+  <h5> 🍻 These are our favorite users! 🍻 </h5>
   <table style="width:50%">
     <tr>
       <th>Name</th>

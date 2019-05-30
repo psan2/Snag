@@ -63,9 +63,19 @@ Location.create(name: "the main lounge")
 Location.create(name: "Lovelace")
 Location.create(name: "Berners-Lee")
 
-status = ["open", "closed", "bailed", "cancelled", "in progress"]
+status = ["open", "bailed", "cancelled", "in progress"]
 
-500.times do
+200.times do
+  Request.create(
+    requester:User.all.sample,
+    snagger:User.all.sample,
+    beer:Beer.all.sample,
+    location:Location.all.sample,
+    status:"closed"
+    )
+  end
+
+200.times do
   Request.create(
     requester:User.all.sample,
     snagger:User.all.sample,
