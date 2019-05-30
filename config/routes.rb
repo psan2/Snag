@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :mods
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "welcome#home"
+  get '/leaderboards', to: 'welcome#leaderboards', as: :leaderboards
   get '/closed', to: 'welcome#closed', as: :closed
 
   resources :beers, only: [:index]
@@ -14,9 +15,5 @@ Rails.application.routes.draw do
 
   get '/log_in', to: 'sessions#new', as: :log_in
   get '/log_out', to: 'sessions#destroy', as: :log_out
-
-  post '/close', to: 'requests#close'
-  get '/confirm', to: 'requests#confirm'
-
 
 end

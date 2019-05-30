@@ -6,8 +6,7 @@ class Request < ApplicationRecord
   belongs_to :location
 
   validate :cannot_snag_own_beer
-  validate :cannot_open_multiple_snags
-  validates :status, inclusion: { in: ["open", "closed", "in progress"]}
+  validates :status, inclusion: { in: ["open", "closed", "in progress", "cancelled", "bailed"]}
 
   def cannot_snag_own_beer
     if requester_id == snagger_id
@@ -15,14 +14,8 @@ class Request < ApplicationRecord
     end
   end
 
-  def cannot_open_multiple_snags
-    if requester.currently_requesting
-      errors.add(:requester, "cannot have multiple requests open")
-    end
-  end
-
   def self.open
-    Request.all.select { |snag| snag.snagger_id.nil? && not(snag.requester_id.nil?) && snag.status == "open" && (snag.updated_at + 2.hours).future?  }
+    Request.all.select { |snag| snag.status == "open" && (snag.updated_at + 2.hours).future?  }
   end
 
   def self.bar_open?
