@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:success] = 'Welcome!'
 			auto_login(@user)
-		  redirect_to root_path
+		  redirect_to requests_path
 		else
 		  render 'new'
 		end
