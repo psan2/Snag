@@ -14,16 +14,17 @@
  *= require_self
  */
 
+ 
+
     body {
         background: image-url('beer-wallpaper.jpg');
-        background-position-x: center;
-        background-position-y: center;
-        background-size: auto;
+        background-position-x: 90%;
+        background-position-y: -250%;
+        background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-origin: initial;
         background-clip: initial;
-        background-size: cover;
         height: 100%;
     }
 
