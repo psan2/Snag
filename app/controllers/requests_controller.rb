@@ -6,17 +6,16 @@ class RequestsController < ApplicationController
   def index
     @open_requests = Request.open
     @currently_snagging = current_user.currently_snagging
+    @currently_requesting = current_user.currently_requesting
   end
 
   def new
     if !(Request.bar_open?) #check if the taps are open
-      redirect_to closed_path
-    elsif current_user.currently_requesting #check if this user already has a request open
-      @open_requests = Request.open
-      flash[:error] = "You already have a request open!"
-      render :index
+      redirect_to closed_path #check if this user already has a request open
     else
       @request = Request.new
+      @currently_snagging = current_user.currently_snagging
+      @currently_requesting = current_user.currently_requesting
     end
   end
 
