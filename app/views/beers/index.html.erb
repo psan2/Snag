@@ -9,16 +9,16 @@
   <thead>
     <tr>
       <th scope="col"></th>
-      <th scope="col">Name</th>
-      <th scope="col">ABV</th>
-      <th scope="col">Description</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
     <% @beers.each do |beer| %>
-      <td>Image</td>
-      <td><%= beer.name %></td>
+      <td><%= image_tag(beer.image)%></td>
+      <td><h5><%= beer.name %></h5></td>
       <td><%= beer.abv %>% ABV</td>
       <td><%= beer.description %></td>
     </tr>

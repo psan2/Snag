@@ -14,10 +14,17 @@ Mod.destroy_all
 Location.destroy_all
 Request.destroy_all
 
+<<<<<<< HEAD
 pale = Beer.create(name: 'London Pale Ale', abv: 4.3, description: 'British and American hops unite to make a sessionable pale ale that’s packed with citrus flavour. Now that’s a special relationship.')
 lager = Beer.create(name: 'London Lager', abv: 4.5, description: 'East Anglian malt and Goldings hops combine for a crisp, refreshing lager that’s full of flavour. A modern classic, straight from London’s back garden.')
 red = Beer.create(name: 'Yakima Red Ale', abv: 4.1, description: 'British and German malts team up with five Yakima Valley American hops to create a vibrant and fruity red ale. As lively and colourful as the people that brew it.')
 cyder = Beer.create(name: 'Aspall Draught Cyder', abv: 5.5, description: 'Lovely with sweet & sour pork, balti and bhuna mild curries, chicken with tomato & sweet red peppers, and Bramley apple pie.')
+=======
+Beer.create(name: 'London Pale Ale', abv: 4.3, description: 'British and American hops unite to make a sessionable pale ale that’s packed with citrus flavour. Now that’s a special relationship.', image: "pale-ale.png")
+Beer.create(name: 'London Lager', abv: 4.5, description: 'East Anglian malt and Goldings hops combine for a crisp, refreshing lager that’s full of flavour. A modern classic, straight from London’s back garden.', image: "lager.png")
+Beer.create(name: 'Yakima Red Ale', abv: 4.1, description: 'British and German malts team up with five Yakima Valley American hops to create a vibrant and fruity red ale. As lively and colourful as the people that brew it.', image: "red-ale.png")
+Beer.create(name: 'Aspall Draught Cyder', abv: 5.5, description: 'Lovely with sweet & sour pork, balti and bhuna mild curries, chicken with tomato & sweet red peppers, and Bramley apple pie.', image: "cider.jpg")
+>>>>>>> ae5131c363f83b5fc1f108b99902b208e5e7fd28
 
 m1 = Mod.create(name: 'Mod 1')
 m2 = Mod.create(name: 'Mod 2')
