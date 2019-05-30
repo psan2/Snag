@@ -20,8 +20,16 @@ class User < ApplicationRecord
     Request.find_by(requester:self, :status => ["open", "in progress"] )
   end
 
+  def completed_snags
+    Requests.where(snagger:self, status:"closed")
+  end
+
+  def fulfilled_requests
+    Requests.where(requester:self, status:"closed")
+  end
+
   def snag_ratio
-    completed_snags = Requests.where(snagger:self, status:"closed")
+    ratio = (completed_snags.length.to_f)/
   end
 
   private

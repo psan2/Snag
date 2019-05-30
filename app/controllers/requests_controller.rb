@@ -3,7 +3,6 @@ class RequestsController < ApplicationController
   before_action :include_beers, only: %i[new create]
   before_action :include_locations, only: %i[new create]
 
-
   def index
     @open_requests = Request.open
   end
@@ -12,6 +11,7 @@ class RequestsController < ApplicationController
     if !(Request.bar_open?) #check if the taps are open
       redirect_to closed_path
     elsif current_user.currently_requesting #check if this user already has a request open
+      @open_requests = Request.open
       flash[:error] = "You already have a request open!"
       render :index
     else
@@ -37,7 +37,6 @@ class RequestsController < ApplicationController
         replacement = @request.dup
         replacement.update(snagger_id:nil, status:"open")
         replacement.save
-        byebug
       end
 
       @request.save
