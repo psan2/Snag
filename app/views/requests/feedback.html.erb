@@ -1,0 +1,43 @@
+<h1>Nice work!</h1>
+
+<h4>Help out your snaggers 👍</h4>
+<br>
+    <%= form_tag(requests_feedback_path(@request), method:"patch") do %>
+      <%= hidden_field_tag :id, @request.id %>
+
+<% if @request.beer.floors.length > 1 %>
+  <div>
+    What floor did you get it from? <br>
+      <%= radio_button_tag(:floor, 0, :checked => true) %>
+      <%= label_tag(:floor_0, "Ground floor") %> <br>
+
+      <%= radio_button_tag(:floor, 5) %>
+      <%= label_tag(:floor_5, "5th floor") %> <br>
+  </div>
+<% else %>
+  <%= hidden_field_tag :floor, 0 %>
+<% end %>
+<div>
+  Was there still beer in the keg? <br>
+      <%= radio_button_tag(:full, true, :checked => true) %>
+      <%= label_tag(:full_true, "Still going when I left") %> <br>
+
+      <%= radio_button_tag(:full, false) %>
+      <%= label_tag(:full_false, "None left, sorry") %> <br>
+</div>
+
+<div>
+  Were there enough cups left? <br>
+      <%= radio_button_tag(:cups, "Plenty left", :checked => true) %>
+      <%= label_tag(:cups_Plenty_left, "Plenty left") %> <br>
+
+      <%= radio_button_tag(:cups, "Just a few") %>
+      <%= label_tag(:cups_Just_a_few, "Just a few") %> <br>
+
+      <%= radio_button_tag(:cups, "Bring your own") %>
+      <%= label_tag(:cups_Bring_your_own, "Bring your own") %> <br>
+
+      <%= submit_tag "Submit", class: 'btn btn-success btn-lg' %>
+    <%end%>
+</div>
+

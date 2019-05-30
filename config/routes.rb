@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
+  get '/requests/feedback/:id', to: 'requests#feedback', as: :requests_feedback
+  patch '/requests/feedback/:id', to: 'requests#feedback_path', as: :requests_feedback_path
+
   get '/sign_up', to: 'users#new', as: :sign_up
 
   get '/log_in', to: 'sessions#new', as: :log_in
