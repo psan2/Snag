@@ -1,9 +1,7 @@
-<div>
+<div class="container">
 <h1>Edit Mod</h1>
 <%= render 'form' %>
-</div>
 
-<div>
 <%= form_tag mod_path, method: "delete" do %>
 <%= submit_tag "Delete Mod" %>
 <% end %>

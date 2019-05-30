@@ -14,14 +14,16 @@
  *= require_self
  */
 
- <style>
- .navbar {
-     padding-left: 0;
-     padding-right: 0;
- }
- .navbar-expand > .container,
- .navbar-expand > .container-fluid {
-     padding-right: 15px;
-     padding-left: 15px;
- }
-</style>
+body {
+    background-image: url("../beer-wallpaper.jpg");
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-origin: initial;
+    background-clip: initial;
+    background-size: cover;
+    opacity: 1;
+    height: 100%;
+}
