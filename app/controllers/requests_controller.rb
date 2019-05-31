@@ -5,6 +5,7 @@ class RequestsController < ApplicationController
   before_action :include_locations, only: %i[new create]
 
   def index
+    @floors = Floor.all
   end
 
   def new
