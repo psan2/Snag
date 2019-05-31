@@ -51,6 +51,10 @@ class User < ApplicationRecord
     completed_snags.map(&:requester)
   end
 
+  def bailed_snags
+    Request.where(snagger:self, status:"bailed")
+  end
+
   private
 
   def new_user?

@@ -45,7 +45,7 @@
       <%end%>
     </tbody>
   </table>
- 
+
  <br>
 <h5>MOST PROLIFIC SNAGGERS </h5>
   <h5>These snaggers have helped out more people 🍻 </h5>
@@ -105,6 +105,25 @@
         <% @users.sort_by {|user| user.fulfilled_requests.length }.reverse![0..5].each do |user|  %>
           <td><%= user.name %></td>
           <td class="text-center"><%= user.fulfilled_requests.length %></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+
+  <h5>LEAST RELIABLE 😢</h5>
+  <h5>These snaggers have bailed on the most snags 🤨 </h5>
+  <table class="table table-borderless table table-sm" style="width:30%">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th class="text-center">Bailed Snags</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @users.sort_by {|user| user.bailed_snags.length }.reverse![0..5].each do |user|  %>
+          <td><%= user.name %></td>
+          <td class="text-center"><%= user.bailed_snags.length %></td>
       </tr>
       <%end%>
     </tbody>
