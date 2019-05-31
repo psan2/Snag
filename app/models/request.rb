@@ -21,8 +21,8 @@ class Request < ApplicationRecord
 
   def self.bar_open?
     # commented out for testing - this function closes the bar before 3 PM
-    true
-    # (15...24).include?(Time.now.hour) ? true : false
+    #true
+    (15...24).include?(Time.now.hour) ? true : false
   end
 
 end
