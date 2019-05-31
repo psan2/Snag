@@ -3,7 +3,7 @@ class CreateKegs < ActiveRecord::Migration[5.2]
     create_table :kegs do |t|
       t.references :floor, foreign_key: true
       t.references :beer, foreign_key: true
-      t.boolean :full
+      t.integer :status, default:3
 
       t.timestamps
     end

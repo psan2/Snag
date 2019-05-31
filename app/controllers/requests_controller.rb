@@ -74,7 +74,7 @@ class RequestsController < ApplicationController
     floor = Floor.find_by(floor_number:feedback_params[:floor])
     keg = Keg.find_by(floor_id:floor.id,beer_id:beer.id)
 
-    keg.update(full:feedback_params[:full])
+    keg.update(status:feedback_params[:status])
     floor.update(cups:feedback_params[:cups])
     redirect_to requests_path
   end
@@ -102,7 +102,7 @@ class RequestsController < ApplicationController
   end
 
   def feedback_params
-    params.permit(:full, :cups, :floor)
+    params.permit(:status, :cups, :floor)
   end
 
   def include_locations

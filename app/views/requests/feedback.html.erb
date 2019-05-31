@@ -20,23 +20,26 @@
 <br>
 <div>
   <h5>Was there still beer in the keg?</h5>
-      <%= radio_button_tag(:full, true, :checked => true) %>
-      <%= label_tag(:full_true, "Still going when I left") %> <br>
+      <%= radio_button_tag(:status, 3, :checked => true) %>
+      <%= label_tag(:status_3, "Still going strong when I left") %> <br>
 
-      <%= radio_button_tag(:full, false) %>
-      <%= label_tag(:full_false, "None left, sorry") %> <br>
+      <%= radio_button_tag(:status, 2) %>
+      <%= label_tag(:status_2, "Starting to slow down...") %> <br>
+
+      <%= radio_button_tag(:status, 1) %>
+      <%= label_tag(:status_1, "None left, sorry") %> <br>
 </div>
 <br>
 <div>
   <h5>Were there enough cups left?</h5>
       <%= radio_button_tag(:cups, "Plenty left", :checked => true) %>
-      <%= label_tag(:cups_Plenty_left, "Plenty left") %> <br>
+      <%= label_tag(:cups_3, 3) %> <br>
 
       <%= radio_button_tag(:cups, "Just a few") %>
-      <%= label_tag(:cups_Just_a_few, "Just a few") %> <br>
+      <%= label_tag(:cups_2, 2) %> <br>
 
       <%= radio_button_tag(:cups, "Bring your own") %>
-      <%= label_tag(:cups_Bring_your_own, "Bring your own") %> <br>
+      <%= label_tag(:cups_1, 1) %> <br>
       <br>
       <%= submit_tag "Submit", class: 'btn btn-success btn-lg' %>
     <%end%>

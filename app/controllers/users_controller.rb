@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 	before_action :find_user, only: [:edit, :show, :update, :destroy]
-	before_action :find_mods, only: [:new, :edit, :create, :update]
 	skip_before_action :require_login, only: [:new, :create]
 
 	def index
@@ -50,16 +49,11 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:username, :password, :password_confirmation, :name, :mod_id)
+		params.require(:user).permit(:username, :password, :password_confirmation, :name)
 	end
 
 	def find_user
 		@user = User.find(params[:id])
 	end
-
-	def find_mods
-		@mods = Mod.all
-	end
-
 
 end

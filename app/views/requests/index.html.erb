@@ -4,47 +4,66 @@
 <table class="table table-borderless" style="width:50%">
   <thead>
     <tr>
-      <th colspan="2" scope="col"><h5 align="center">GROUND FLOOR</h5></th>
+      <th colspan="4" scope="col"><h5 align="center">GROUND FLOOR</h5></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td align="center">
-        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[0].full %>
-          <%= image_tag("/img/beer_full.png",height:"250")%>
+      <td colspan="4">Cups:
+        <%if @floors.find { |floor| floor.floor_number == 0}.cups == 3 %>
+          🥛🥛🥛
+        <% elsif @floors.find { |floor| floor.floor_number == 0}.cups == 2 %>
+          🥛
         <% else %>
-          <%= image_tag("/img/beer_empty.png",height:"250")%>
+          BYO
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[0].status == 3 %>
+          <%= image_tag("/img/keg_full.png",height:"125")%>
+        <% elsif @floors.find { |floor| floor.floor_number == 0}.kegs[0].status == 2 %>
+          <%= image_tag("/img/keg_half.png",height:"125")%>
+        <% else %>
+          <%= image_tag("/img/keg_empty.png",height:"125")%>
         <% end %>
         <br>
         <%= @floors.find { |floor| floor.floor_number == 0}.kegs[0].beer.name %>
       </td>
       <td align="center">
-        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[1].full %>
-          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[1].status == 3 %>
+          <%= image_tag("/img/keg_full.png",height:"125")%>
+        <% elsif @floors.find { |floor| floor.floor_number == 0}.kegs[1].status == 2 %>
+          <%= image_tag("/img/keg_half.png",height:"125")%>
         <% else %>
-          <%= image_tag("/img/beer_empty.png",height:"250")%>
+          <%= image_tag("/img/keg_empty.png",height:"125")%>
         <% end %>
         <br>
         <%= @floors.find { |floor| floor.floor_number == 0}.kegs[1].beer.name %>
       </td>
-    </tr>
-    <tr>
       <td align="center">
-        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[2].full %>
-          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[2].status == 3 %>
+          <%= image_tag("/img/keg_full.png",height:"125")%>
+        <% elsif @floors.find { |floor| floor.floor_number == 0}.kegs[2].status == 2 %>
+          <%= image_tag("/img/keg_half.png",height:"125")%>
         <% else %>
-          <%= image_tag("/img/beer_empty.png",height:"250")%>
+          <%= image_tag("/img/keg_empty.png",height:"125")%>
         <% end %>
         <br>
         <%= @floors.find { |floor| floor.floor_number == 0}.kegs[2].beer.name %>
       </td>
 
       <td align="center">
-        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[3].full %>
-          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <%if @floors.find { |floor| floor.floor_number == 0}.kegs[3].status == 3 %>
+          <%= image_tag("/img/keg_full.png",height:"125")%>
+        <% elsif @floors.find { |floor| floor.floor_number == 0}.kegs[3].status == 2 %>
+          <%= image_tag("/img/keg_half.png",height:"125")%>
         <% else %>
-          <%= image_tag("/img/beer_empty.png",height:"250")%>
+          <%= image_tag("/img/keg_empty.png",height:"125")%>
         <% end %>
         <br>
         <%= @floors.find { |floor| floor.floor_number == 0}.kegs[3].beer.name %>
@@ -62,20 +81,35 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center">
-        <%if @floors.find { |floor| floor.floor_number == 5}.kegs[0].full %>
-          <%= image_tag("/img/beer_full.png",height:"250")%>
+      <td colspan="2">Cups:
+        <%if @floors.find { |floor| floor.floor_number == 5}.cups == 3 %>
+          🥛🥛🥛
+        <% elsif @floors.find { |floor| floor.floor_number == 5}.cups == 2 %>
+          🥛
         <% else %>
-          <%= image_tag("/img/beer_empty.png",height:"250")%>
+          BYO
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <%if @floors.find { |floor| floor.floor_number == 5}.kegs[0].status == 3 %>
+          <%= image_tag("/img/keg_full.png",height:"125")%>
+        <% elsif @floors.find { |floor| floor.floor_number == 5}.kegs[0].status == 2 %>
+          <%= image_tag("/img/keg_half.png",height:"125")%>
+        <% else %>
+          <%= image_tag("/img/keg_empty.png",height:"125")%>
         <% end %>
         <br>
         <%= @floors.find { |floor| floor.floor_number == 5}.kegs[0].beer.name %>
       </td>
       <td align="center">
-        <%if @floors.find { |floor| floor.floor_number == 5}.kegs[1].full %>
-          <%= image_tag("/img/beer_full.png",height:"250")%>
+        <%if @floors.find { |floor| floor.floor_number == 5}.kegs[1].status == 3 %>
+          <%= image_tag("/img/keg_full.png",height:"125")%>
+        <% elsif @floors.find { |floor| floor.floor_number == 5}.kegs[1].status == 2 %>
+          <%= image_tag("/img/keg_half.png",height:"125")%>
         <% else %>
-          <%= image_tag("/img/beer_empty.png",height:"250")%>
+          <%= image_tag("/img/keg_empty.png",height:"125")%>
         <% end %>
         <br>
         <%= @floors.find { |floor| floor.floor_number == 5}.kegs[1].beer.name %>

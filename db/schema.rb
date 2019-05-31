@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_05_30_133529) do
 
   create_table "floors", force: :cascade do |t|
     t.integer "floor_number"
-    t.string "cups"
+    t.integer "cups", default: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_05_30_133529) do
   create_table "kegs", force: :cascade do |t|
     t.bigint "floor_id"
     t.bigint "beer_id"
-    t.boolean "full"
+    t.integer "status", default: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["beer_id"], name: "index_kegs_on_beer_id"
@@ -45,10 +45,6 @@ ActiveRecord::Schema.define(version: 2019_05_30_133529) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "mods", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -67,7 +63,6 @@ ActiveRecord::Schema.define(version: 2019_05_30_133529) do
     t.string "crypted_password"
     t.string "salt"
     t.string "name"
-    t.integer "mod_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_users_on_username", unique: true
