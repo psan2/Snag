@@ -32,14 +32,14 @@
 <br>
 <div>
   <h5>Were there enough cups left?</h5>
-      <%= radio_button_tag(:cups, "Plenty left", :checked => true) %>
-      <%= label_tag(:cups_3, 3) %> <br>
+      <%= radio_button_tag(:cups, 3, :checked => true) %>
+      <%= label_tag(:cups_3, "Plenty left") %> <br>
 
-      <%= radio_button_tag(:cups, "Just a few") %>
-      <%= label_tag(:cups_2, 2) %> <br>
+      <%= radio_button_tag(:cups, 2) %>
+      <%= label_tag(:cups_2, "Just a few") %> <br>
 
-      <%= radio_button_tag(:cups, "Bring your own") %>
-      <%= label_tag(:cups_1, 1) %> <br>
+      <%= radio_button_tag(:cups, 1) %>
+      <%= label_tag(:cups_1, "Bring your own") %> <br>
       <br>
       <%= submit_tag "Submit", class: 'btn btn-success btn-lg' %>
     <%end%>

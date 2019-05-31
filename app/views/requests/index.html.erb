@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <tr>
-      <td colspan="4">Cups:
+      <td colspan="4" align="center">Cups:
         <%if @floors.find { |floor| floor.floor_number == 0}.cups == 3 %>
           🥛🥛🥛
         <% elsif @floors.find { |floor| floor.floor_number == 0}.cups == 2 %>
@@ -81,7 +81,7 @@
   </thead>
   <tbody>
     <tr>
-      <td colspan="2">Cups:
+      <td colspan="2" align="center">Cups:
         <%if @floors.find { |floor| floor.floor_number == 5}.cups == 3 %>
           🥛🥛🥛
         <% elsif @floors.find { |floor| floor.floor_number == 5}.cups == 2 %>
