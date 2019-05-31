@@ -34,9 +34,19 @@
     }
 
     .margins {
-        padding-left: 30px;
+        padding-left: 10px;
         padding-right: 30px;
         padding-top: 10px;
+    }
+
+    .fixed-type-scroller {
+        height: 70vh;
+        overflow-y: auto;
+    }
+
+    .margins-for-errors {
+        padding-left: 8px;
+        padding-top: 8px;
     }
 
 
