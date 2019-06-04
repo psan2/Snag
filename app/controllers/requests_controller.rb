@@ -5,6 +5,7 @@ class RequestsController < ApplicationController
   before_action :include_locations, only: %i[new create]
 
   def index
+    Request.timecheck
   end
 
   def new

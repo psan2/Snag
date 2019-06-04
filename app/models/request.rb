@@ -20,9 +20,26 @@ class Request < ApplicationRecord
   end
 
   def self.bar_open?
-    # commented out for testing - this function closes the bar before 3 PM
-    true
-    #(15...24).include?(Time.now.hour) ? true : false
+    (15...24).include?(Time.now.hour) ? true : false
+  end
+
+
+  def self.timecheck
+    today = Date.today
+    hour = Time.now.hour
+
+    if Keg.first.updated_at < today
+      Keg.refresh
+      Request.cancel_overnight_orders
+    end
+  end
+
+  def self.cancel_overnight_orders
+    remaining = all.each do |request|
+      if request.created_at < (Date.today-1) && request.status == "/[open|in progress]/"
+        request.update(status:"cancelled")
+      end
+    end
   end
 
 end
