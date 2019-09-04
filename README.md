@@ -16,7 +16,7 @@ Snag is the result of Flatiron School's Ruby on Rails module.
 - HTML / CSS / Bootstrap
 - PostgreSQL
 - Heroku
-- Sorcery for authentification
+- Sorcery for authentication
 
 ## Features
 
