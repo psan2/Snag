@@ -8,8 +8,6 @@
 
 Inspired by WeWork's beer on tap building, users can sign in and request beers from colleagues (request a snag) that are going downstairs, specifying their current location and the type of beer they want delivered. Colleagues can then snag a beer for their friends and deliver it.
 
-Snag is the result of Flatiron School's Ruby on Rails module.
-
 ## Technology
 
 - Ruby on Rails
